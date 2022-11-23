@@ -2,13 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/caramelo.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--    <script>-->
+<!--      window._AT = window._AT || {};-->
+<!--      window._AT.config = Object.assign({}, window._AT.config, {-->
+<!--        checkAllowedOrigin: false,-->
+<!--      });-->
+<!--      window.targetGlobalSettings = {-->
+<!--        // cookieDomain: "tgt-spa.github.io", // set cookies on the subdomain-->
+<!--        cookieDomain: "target-spa.vercel.app",-->
+<!--        // cookieDomain: "awesome-stonebraker-95ee14.netlify.app/",-->
+<!--      };-->
+<!--    </script>-->
+
+    <script>
+      !function (n, o) {
+        o.forEach(function (o) {
+          n[o] || ((n.__alloyNS = n.__alloyNS ||
+                  []).push(o), n[o] = function () {
+            var u = arguments; return new Promise(
+                    function (i, l) { n[o].q.push([i, l, u]) })
+          }, n[o].q = [])
+        })
+      }
+      (window, ["alloy"]);
+    </script>
+
+
+    <!--/Data Layer-->
+    <!-- targetPageParams(), targetPageParamsAll(), Data Providers or targetGlobalSettings() functions to enrich the visitor profile or modify the library settings-->
+<!--    <script>-->
+<!--      targetPageParamsAll = function () {-->
+<!--        return {-->
+<!--          a: 1,-->
+<!--          b: 2,-->
+<!--          at_property: "8757f595-1143-b75b-c7c8-111fc7a4cc6d",-->
+<!--          profile: {-->
+<!--            test: "test",-->
+<!--            country: {-->
+<!--              city: "Bucharest",-->
+<!--            },-->
+<!--          },-->
+<!--        };-->
+<!--      };-->
+<!--    </script>-->
+    <!--/targetPageParams()-->
+<!--    <script src="%PUBLIC_URL%/scripts/at-taasqa1-spa.js"></script>-->
+    <script src="%PUBLIC_URL%/scripts/alloy2.js"></script>
+<!--    <script>-->
+<!--      function configureAlloy(obj) {-->
+<!--        obj ||= {};-->
+<!--        obj.edgeConfigId ||= '0814ac07-ffeb-44c4-8633-85301d5e721c';-->
+<!--        obj.orgId ||= "906E3A095DC834230A495FD6@AdobeOrg";-->
+<!--        console.info("configuring alloy with: ", obj);  alloy("configure", obj);-->
+<!--      }-->
+
+<!--      configureAlloy({-->
+<!--        defaultConsent: "in",-->
+<!--        debugEnabled: true,-->
+<!--        idMigrationEnabled: false,-->
+<!--        prehidingStyle: "body { opacity: 0 !important }",-->
+<!--        thirdPartyCookiesEnabled: false-->
+<!--      });-->
+
+<!--      var alloyEvent = { renderDecisions: true};-->
+
+<!--      alloy("sendEvent", alloyEvent).catch(() => { console.log("ERROR: failed to send alloyEvent") });-->
+<!--    </script>-->
+
+    <script>
+      alloy("configure", {
+        // defaultConsent: { general: "pending" },
+        edgeDomain: undefined,
+        edgeConfigId: "140a1d7d-90ac-44d4-921e-6bb819da36b7:prod",
+        orgId: "97D1F3F459CE0AD80A495CBE@AdobeOrg",
+        debugEnabled: true,
+        prehidingStyle: "body { opacity: 0 !important }"
+      });
+    </script>
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="Target SPA website" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -20,11 +94,11 @@
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      Unlike "/caramelo.jpg" or "caramelo.jpg", "%PUBLIC_URL%/caramelo.jpg" will
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Target SPA website</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

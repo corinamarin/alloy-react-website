@@ -1,23 +1,44 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { BrowserRouter as Router, Route, Link, Routes} 
+        from "react-router-dom";
+  import Page1 from './Page1.js';
+  import Page2 from './Page2.js';
+import { useEffect } from 'react';
 function App() {
+
+  useEffect(() => {
+    window["alloy"]("sendEvent", {
+      renderDecisions: true,
+      xdm: {
+          web: {
+              webPageDetails: {
+                  viewName: "/home"
+              }
+          },
+          eventType: "view-change"
+      }
+  }).then(({decisions = []}) => {
+      console.log("scope based decisions for home view", decisions);
+  });
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<h1>Home Page</h1>} />
+          <Route exact path="page1" element={<Page1 />} />
+            <Route exact path="page2" element={<Page2 />} />
+        </Routes>
+        <div className="list">
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="page1">Page 1</Link></li>
+            <li><Link to="page2">Page 2</Link></li>
+          </ul>
+        </div>
+      </Router>
     </div>
   );
 }
