@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Routes} 
+import { HashRouter as Router, Route, Link, Routes} 
         from "react-router-dom";
   import Page1 from './Page1.js';
   import Page2 from './Page2.js';
