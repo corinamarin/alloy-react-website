@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 const Page1 = () => {
+
     useEffect(() => {
         window["alloy"]("sendEvent", {
           renderDecisions: true,
@@ -12,19 +13,19 @@ const Page1 = () => {
               eventType: "view-change"
           }
       }).then(({decisions = []}) => {
-          console.log("scope based decisions for page1 view", decisions);
+         
       });
       }, [])
     return (
         <div>
             <p>
-                text
+                text 1 1
             </p>
             <p>
-                text
+                text 1 1
             </p>
             <p>
-                text
+                text 1 1
             </p>
             <p>
                 text
