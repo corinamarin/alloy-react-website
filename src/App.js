@@ -20,6 +20,18 @@ function App() {
       }
   }).then(({decisions = []}) => {
       console.log("scope based decisions for home view", decisions);
+
+      window["alloy"]("sendEvent", {
+        renderDecisions: true,
+        xdm: {
+            web: {
+                webPageDetails: {
+                    views: ["home", "about", "dashboard"]
+                }
+            },
+            eventType: "view-change"
+        }
+    })
   });
   }, [])
 
