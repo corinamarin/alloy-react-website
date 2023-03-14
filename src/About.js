@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-const Page1 = () => {
+const About = () => {
 
     useEffect(() => {
         window["alloy"]("sendEvent", {
@@ -7,7 +7,7 @@ const Page1 = () => {
           xdm: {
               web: {
                   webPageDetails: {
-                      viewName: "/page1"
+                      viewName: "about"
                   }
               },
               eventType: "view-change"
@@ -52,4 +52,4 @@ const Page1 = () => {
     )
 }
 
-export default Page1;
+export default About;

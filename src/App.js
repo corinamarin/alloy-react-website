@@ -2,8 +2,8 @@
 import './App.css';
 import {  BrowserRouter, Route, Link, Routes, Switch} 
         from "react-router-dom";
-  import Page1 from './Page1.js';
-  import Page2 from './Page2.js';
+import About from './About.js';
+import Dashboard from './Dashboard.js';
 import { useEffect } from 'react';
 function App() {
 
@@ -13,7 +13,7 @@ function App() {
       xdm: {
           web: {
               webPageDetails: {
-                  viewName: "/home"
+                  viewName: "home"
               }
           },
           eventType: "view-change"
@@ -52,10 +52,10 @@ function App() {
           <Route exact path="/home" element={<div> acasa </div>} />
             
           
-          <Route path="/about" element={<Page1 />} />
+          <Route path="/about" element={<About />} />
             
           
-          <Route path="/dashboard" element={<Page2 />} />
+          <Route path="/dashboard" element={<Dashboard />} />
             
           
         </Routes>

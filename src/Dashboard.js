@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
-const Page2 = () => {
+const Dashboard = () => {
     useEffect(() => {
         window["alloy"]("sendEvent", {
           renderDecisions: true,
           xdm: {
               web: {
                   webPageDetails: {
-                      viewName: "/page2"
+                      viewName: "dashboard"
                   }
               },
               eventType: "view-change"
           }
       }).then(({decisions = []}) => {
-          console.log("scope based decisions for page2 view", decisions);
+          console.log("scope based decisions for dashboard view", decisions);
       });
       }, [])
     return (
@@ -51,4 +51,4 @@ const Page2 = () => {
     )
 }
 
-export default Page2;
+export default Dashboard;
