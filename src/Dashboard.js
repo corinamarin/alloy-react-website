@@ -16,7 +16,8 @@ const Dashboard = () => {
       });
       }, [])
     return (
-        <div>
+        <div id="dashboard">
+            <h1>DASHBOARD</h1>
             <p>
                 text22
             </p>

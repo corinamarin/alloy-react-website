@@ -17,7 +17,8 @@ const About = () => {
       });
       }, [])
     return (
-        <div>
+        <div id="about">
+             <h1>ABOUT</h1>
             <p>
                 text 1 1
             </p>
