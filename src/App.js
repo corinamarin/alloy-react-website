@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 import About from "./About.js";
 import Dashboard from "./Dashboard.js";
+import Home from "./Home.js";
 import { useEffect } from "react";
 
 function App() {
