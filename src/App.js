@@ -38,6 +38,7 @@ function App() {
 
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
+  some text here
       </div>
     </BrowserRouter>
   );
