@@ -6,19 +6,6 @@ import Home from "./Home.js";
 import { useEffect } from "react";
 
 function App() {
-  useEffect(() => {
-    window["alloy"]("sendEvent", {
-      renderDecisions: true,
-      xdm: {
-        web: {
-          webPageDetails: {
-            views: ["home", "about", "dashboard"],
-          },
-        },
-        eventType: "view-change",
-      },
-    });
-  }, []);
 
   return (
     <BrowserRouter>
