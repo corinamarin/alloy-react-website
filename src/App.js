@@ -6,7 +6,9 @@ import Home from "./Home.js";
 import { useEffect } from "react";
 
 function App() {
-
+   useEffect(() => {
+      console.log("App loaded");
+        }, [])
   return (
     <BrowserRouter>
       <div>
