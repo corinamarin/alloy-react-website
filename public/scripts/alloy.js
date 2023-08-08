@@ -204,7 +204,7 @@
   var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
   function createCommonjsModule(fn, module) {
-    return module = { exports: {} }, fn(module, module.exports), module.exports;
+  	return module = { exports: {} }, fn(module, module.exports), module.exports;
   }
 
   var js_cookie = createCommonjsModule(function (module, exports) {
@@ -345,13 +345,13 @@
 
         api.get = function (key) {
           return get(key, false
-            /* read as raw */
+          /* read as raw */
           );
         };
 
         api.getJSON = function (key) {
           return get(key, true
-            /* read as json */
+          /* read as json */
           );
         };
 
@@ -708,7 +708,7 @@
   */
   var createLoggingCookieJar = (function (_ref) {
     var logger = _ref.logger,
-      cookieJar = _ref.cookieJar;
+        cookieJar = _ref.cookieJar;
     return _objectSpread2(_objectSpread2({}, cookieJar), {}, {
       set: function set(key, value, options) {
         logger.info("Setting cookie", _objectSpread2({
@@ -778,10 +778,10 @@
   /*
   crc32 · JavaScript Function to Calculate CRC32 of a String
   Description
-    Below is a JavaScript function to calculate CRC32 of a string.
-    The string can be either ASCII or Unicode.
-    Unicode strings will be encoded in UTF-8.
-    The polynomial used in calculation is 0xedb88320.
+    Below is a JavaScript function to calculate CRC32 of a string. 
+    The string can be either ASCII or Unicode. 
+    Unicode strings will be encoded in UTF-8. 
+    The polynomial used in calculation is 0xedb88320. 
     This polynomial is used in Ethernet, Gzip, PNG, SATA and many other technologies.
   */
   var crc32 = function () {
@@ -988,8 +988,8 @@
 
   var fireImageInDocument = (function (_ref) {
     var src = _ref.src,
-      _ref$currentDocument = _ref.currentDocument,
-      currentDocument = _ref$currentDocument === void 0 ? document : _ref$currentDocument;
+        _ref$currentDocument = _ref.currentDocument,
+        currentDocument = _ref$currentDocument === void 0 ? document : _ref$currentDocument;
     return new Promise(function (resolve, reject) {
       var attrs = {
         src: src
@@ -1411,14 +1411,14 @@
   };
   var injectFireReferrerHideableImage = (function () {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      _ref$appendNode = _ref.appendNode,
-      appendNode$1 = _ref$appendNode === void 0 ? appendNode : _ref$appendNode,
-      _ref$awaitSelector = _ref.awaitSelector,
-      awaitSelector$1 = _ref$awaitSelector === void 0 ? awaitSelector : _ref$awaitSelector,
-      _ref$createNode = _ref.createNode,
-      createNode$1 = _ref$createNode === void 0 ? createNode : _ref$createNode,
-      _ref$fireImage = _ref.fireImage,
-      fireImage = _ref$fireImage === void 0 ? fireImageInDocument : _ref$fireImage;
+        _ref$appendNode = _ref.appendNode,
+        appendNode$1 = _ref$appendNode === void 0 ? appendNode : _ref$appendNode,
+        _ref$awaitSelector = _ref.awaitSelector,
+        awaitSelector$1 = _ref$awaitSelector === void 0 ? awaitSelector : _ref$awaitSelector,
+        _ref$createNode = _ref.createNode,
+        createNode$1 = _ref$createNode === void 0 ? createNode : _ref$createNode,
+        _ref$fireImage = _ref.fireImage,
+        fireImage = _ref$fireImage === void 0 ? fireImageInDocument : _ref$fireImage;
 
     var fireOnPage = fireImage;
     var hiddenIframe;
@@ -1426,7 +1426,7 @@
     var createIframe = function createIframe() {
       return awaitSelector$1(BODY).then(function (_ref2) {
         var _ref3 = _slicedToArray(_ref2, 1),
-          body = _ref3[0];
+            body = _ref3[0];
 
         if (hiddenIframe) {
           return hiddenIframe;
@@ -1450,7 +1450,7 @@
 
     return function (request) {
       var hideReferrer = request.hideReferrer,
-        url = request.url;
+          url = request.url;
       return hideReferrer ? fireInIframe({
         src: url
       }) : fireOnPage({
@@ -1607,6 +1607,7 @@
   */
   var IDENTITY = "identity";
   var CONSENT = "consent";
+  var AT_QA_MODE = "at_qa_mode";
   var CLUSTER = "cluster";
 
   /*
@@ -1788,10 +1789,10 @@
    * @param {*} value
    * @returns {boolean}
    */
-    // eslint-disable-next-line no-restricted-globals
+  // eslint-disable-next-line no-restricted-globals
   var isNumber = (function (value) {
-      return typeof value === "number" && !isNaN(value);
-    });
+    return typeof value === "number" && !isNaN(value);
+  });
 
   /*
   Copyright 2019 Adobe. All rights reserved.
@@ -1836,6 +1837,21 @@
 
   var isNamespacedCookieName = (function (orgId, name) {
     return name.indexOf(COOKIE_NAME_PREFIX + "_" + sanitizeOrgIdForCookieName(orgId) + "_") === 0;
+  });
+
+  /*
+  Copyright 2022 Adobe. All rights reserved.
+  This file is licensed to you under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License. You may obtain a copy
+  of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under
+  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+  OF ANY KIND, either express or implied. See the License for the specific language
+  governing permissions and limitations under the License.
+  */
+  var isLegacyCookieName = (function (name) {
+    return name === AT_QA_MODE;
   });
 
   /*
@@ -1996,11 +2012,11 @@
 
     for (var i = 0; i < len; ++i) {
       var x = qs[i].replace(regexp, '%20'),
-        idx = x.indexOf(eq),
-        kstr,
-        vstr,
-        k,
-        v;
+          idx = x.indexOf(eq),
+          kstr,
+          vstr,
+          k,
+          v;
 
       if (idx >= 0) {
         kstr = x.substr(0, idx);
@@ -2135,7 +2151,7 @@
   */
   var updateErrorMessage = (function (_ref) {
     var error = _ref.error,
-      message = _ref.message;
+        message = _ref.message;
 
     try {
       error.message = message;
@@ -2165,7 +2181,7 @@
 
   var stackError = (function (_ref) {
     var error = _ref.error,
-      message = _ref.message;
+        message = _ref.message;
     var errorToStack = toError(error);
     var newMessage = message + "\nCaused by: " + errorToStack.message;
     updateErrorMessage({
@@ -2190,22 +2206,14 @@
   OF ANY KIND, either express or implied. See the License for the specific language
   governing permissions and limitations under the License.
   */
+
   /*
    * coerce `value` to a number or return `defaultValue` if it cannot be.
-   *
-   * The coersion is attempted if value is a number or string.
    */
-
   var toInteger = (function (value, defaultValue) {
-    if (isNumber(value) || isString(value)) {
-      var n = Math.round(Number(value)); // eslint-disable-next-line no-restricted-globals
+    var n = Math.round(Number(value)); // eslint-disable-next-line no-restricted-globals
 
-      if (!isNaN(n)) {
-        return n;
-      }
-    }
-
-    return defaultValue;
+    return isNaN(n) ? defaultValue : n;
   });
 
   /*
@@ -3096,7 +3104,7 @@
     }).noUnknownFields(),
     primary: boundBoolean(),
     xid: boundString()
-  }).noUnknownFields()).required());
+  })).required());
 
   /*
   Copyright 2019 Adobe. All rights reserved.
@@ -3124,11 +3132,11 @@
   */
   var createLogController = (function (_ref) {
     var console = _ref.console,
-      locationSearch = _ref.locationSearch,
-      createLogger = _ref.createLogger,
-      instanceName = _ref.instanceName,
-      createNamespacedStorage = _ref.createNamespacedStorage,
-      getMonitors = _ref.getMonitors;
+        locationSearch = _ref.locationSearch,
+        createLogger = _ref.createLogger,
+        instanceName = _ref.instanceName,
+        createNamespacedStorage = _ref.createNamespacedStorage,
+        getMonitors = _ref.getMonitors;
     var parsedQueryString = reactorQueryString.parse(locationSearch);
     var storage = createNamespacedStorage("instance." + instanceName + ".");
     var debugSessionValue = storage.session.getItem("debug");
@@ -3196,18 +3204,18 @@
   */
   // TO-DOCUMENT: Lifecycle hooks and their params.
   var hookNames = [// Called after all components have been registered.
-    "onComponentsRegistered", // Called before an event is sent on a data collection request
-    "onBeforeEvent", // Called before each request is made to the edge.
-    "onBeforeRequest", // Called after each response is returned from the edge with a successful
-    // status code
-    "onResponse", // Called after a network request to the edge fails. Either the request
-    // didn't make it to the edge, didn't make it to Konductor, or Konductor
-    // failed to return a regularly-structured response. (In this case { error }
-    // is passed as the parameter)
-    // Also called when the respone returns a 400 or 500 error. (In this case
-    // { response } is passed as the parameter)
-    "onRequestFailure", // A user clicked on an element.
-    "onClick"];
+  "onComponentsRegistered", // Called before an event is sent on a data collection request
+  "onBeforeEvent", // Called before each request is made to the edge.
+  "onBeforeRequest", // Called after each response is returned from the edge with a successful
+  // status code
+  "onResponse", // Called after a network request to the edge fails. Either the request
+  // didn't make it to the edge, didn't make it to Konductor, or Konductor
+  // failed to return a regularly-structured response. (In this case { error }
+  // is passed as the parameter)
+  // Also called when the respone returns a 400 or 500 error. (In this case
+  // { response } is passed as the parameter)
+  "onRequestFailure", // A user clicked on an element.
+  "onClick"];
 
   var createHook = function createHook(componentRegistry, hookName) {
     return function () {
@@ -3321,7 +3329,7 @@
     return {
       register: function register(namespace, component) {
         var commands = component.commands,
-          lifecycle = component.lifecycle;
+            lifecycle = component.lifecycle;
         registerComponentCommands(namespace, commands);
         registerLifecycleCallbacks(namespace, lifecycle);
         componentsByNamespace[namespace] = component;
@@ -3340,19 +3348,19 @@
 
   var injectSendNetworkRequest = (function (_ref) {
     var logger = _ref.logger,
-      sendFetchRequest = _ref.sendFetchRequest,
-      sendBeaconRequest = _ref.sendBeaconRequest,
-      isRequestRetryable = _ref.isRequestRetryable,
-      getRequestRetryDelay = _ref.getRequestRetryDelay;
+        sendFetchRequest = _ref.sendFetchRequest,
+        sendBeaconRequest = _ref.sendBeaconRequest,
+        isRequestRetryable = _ref.isRequestRetryable,
+        getRequestRetryDelay = _ref.getRequestRetryDelay;
 
     /**
      * Send a network request and returns details about the response.
      */
     return function (_ref2) {
       var requestId = _ref2.requestId,
-        url = _ref2.url,
-        payload = _ref2.payload,
-        useSendBeacon = _ref2.useSendBeacon;
+          url = _ref2.url,
+          payload = _ref2.payload,
+          useSendBeacon = _ref2.useSendBeacon;
       // We want to log raw payload and event data rather than
       // our fancy wrapper objects. Calling payload.toJSON() is
       // insufficient to get all the nested raw data, because it's
@@ -3623,7 +3631,7 @@
   */
   var createConsent = (function (_ref) {
     var generalConsentState = _ref.generalConsentState,
-      logger = _ref.logger;
+        logger = _ref.logger;
 
     var _setConsent = function setConsent(consentByPurpose, source) {
       switch (consentByPurpose[GENERAL]) {
@@ -3833,14 +3841,14 @@
     var extractEdgeInfo = _ref.extractEdgeInfo;
     return function (_ref2) {
       var _ref2$content = _ref2.content,
-        content = _ref2$content === void 0 ? {} : _ref2$content,
-        getHeader = _ref2.getHeader;
+          content = _ref2$content === void 0 ? {} : _ref2$content,
+          getHeader = _ref2.getHeader;
       var _content$handle = content.handle,
-        handle = _content$handle === void 0 ? [] : _content$handle,
-        _content$errors = content.errors,
-        errors = _content$errors === void 0 ? [] : _content$errors,
-        _content$warnings = content.warnings,
-        warnings = _content$warnings === void 0 ? [] : _content$warnings;
+          handle = _content$handle === void 0 ? [] : _content$handle,
+          _content$errors = content.errors,
+          errors = _content$errors === void 0 ? [] : _content$errors,
+          _content$warnings = content.warnings,
+          warnings = _content$warnings === void 0 ? [] : _content$warnings;
       /**
        * Response object.
        * @typedef {Object} Response
@@ -3916,10 +3924,10 @@
   */
   var injectExecuteCommand = (function (_ref) {
     var logger = _ref.logger,
-      configureCommand = _ref.configureCommand,
-      setDebugCommand = _ref.setDebugCommand,
-      handleError = _ref.handleError,
-      validateCommandOptions = _ref.validateCommandOptions;
+        configureCommand = _ref.configureCommand,
+        setDebugCommand = _ref.setDebugCommand,
+        handleError = _ref.handleError,
+        validateCommandOptions = _ref.validateCommandOptions;
     var configurePromise;
 
     var getExecutor = function getExecutor(commandName, options) {
@@ -4024,11 +4032,11 @@
   var COMMAND_DOC_URI = "https://adobe.ly/3sHgQHb";
   var validateCommandOptions = (function (_ref) {
     var command = _ref.command,
-      options = _ref.options;
+        options = _ref.options;
     var commandName = command.commandName,
-      _command$documentatio = command.documentationUri,
-      documentationUri = _command$documentatio === void 0 ? COMMAND_DOC_URI : _command$documentatio,
-      optionsValidator = command.optionsValidator;
+        _command$documentatio = command.documentationUri,
+        documentationUri = _command$documentatio === void 0 ? COMMAND_DOC_URI : _command$documentatio,
+        optionsValidator = command.optionsValidator;
     var validatedOptions = options;
 
     if (optionsValidator) {
@@ -4069,16 +4077,14 @@
         identityMap: validateIdentityMap
       }),
       data: boundObjectOf({}),
-      documentUnloading: boundBoolean(),
       renderDecisions: boundBoolean(),
       decisionScopes: boundArrayOf(boundString()).uniqueItems(),
       personalization: boundObjectOf({
         decisionScopes: boundArrayOf(boundString()).uniqueItems(),
         surfaces: boundArrayOf(boundString()).uniqueItems()
       }),
-      datasetId: boundString(),
-      mergeId: boundString()
-    }).required().noUnknownFields();
+      datasetId: boundString()
+    }).required();
     return eventOptionsValidator(options);
   });
 
@@ -4093,7 +4099,7 @@
           payload: boundAnything().required()
         })).required()
       }).required()
-    }).noUnknownFields();
+    });
     return validator(options);
   });
 
@@ -4122,18 +4128,18 @@
           },
           run: function run(options) {
             var xdm = options.xdm,
-              data = options.data,
-              _options$documentUnlo = options.documentUnloading,
-              documentUnloading = _options$documentUnlo === void 0 ? false : _options$documentUnlo,
-              type = options.type,
-              mergeId = options.mergeId,
-              _options$renderDecisi = options.renderDecisions,
-              renderDecisions = _options$renderDecisi === void 0 ? false : _options$renderDecisi,
-              _options$decisionScop = options.decisionScopes,
-              decisionScopes = _options$decisionScop === void 0 ? [] : _options$decisionScop,
-              _options$personalizat = options.personalization,
-              personalization = _options$personalizat === void 0 ? {} : _options$personalizat,
-              datasetId = options.datasetId;
+                data = options.data,
+                _options$documentUnlo = options.documentUnloading,
+                documentUnloading = _options$documentUnlo === void 0 ? false : _options$documentUnlo,
+                type = options.type,
+                mergeId = options.mergeId,
+                _options$renderDecisi = options.renderDecisions,
+                renderDecisions = _options$renderDecisi === void 0 ? false : _options$renderDecisi,
+                _options$decisionScop = options.decisionScopes,
+                decisionScopes = _options$decisionScop === void 0 ? [] : _options$decisionScop,
+                _options$personalizat = options.personalization,
+                personalization = _options$personalizat === void 0 ? {} : _options$personalizat,
+                datasetId = options.datasetId;
             var event = eventManager.createEvent();
 
             if (documentUnloading) {
@@ -4179,13 +4185,13 @@
           },
           run: function run(options) {
             var _options$renderDecisi2 = options.renderDecisions,
-              renderDecisions = _options$renderDecisi2 === void 0 ? false : _options$renderDecisi2,
-              _options$responseHead = options.responseHeaders,
-              responseHeaders = _options$responseHead === void 0 ? {} : _options$responseHead,
-              _options$responseBody = options.responseBody,
-              responseBody = _options$responseBody === void 0 ? {
-                handle: []
-              } : _options$responseBody;
+                renderDecisions = _options$renderDecisi2 === void 0 ? false : _options$renderDecisi2,
+                _options$responseHead = options.responseHeaders,
+                responseHeaders = _options$responseHead === void 0 ? {} : _options$responseHead,
+                _options$responseBody = options.responseBody,
+                responseBody = _options$responseBody === void 0 ? {
+              handle: []
+            } : _options$responseBody;
             var event = eventManager.createEvent();
             return eventManager.applyResponse(event, {
               renderDecisions: renderDecisions,
@@ -4215,8 +4221,8 @@
 
   var createClickHandler = function createClickHandler(_ref) {
     var eventManager = _ref.eventManager,
-      lifecycle = _ref.lifecycle,
-      handleError = _ref.handleError;
+        lifecycle = _ref.lifecycle,
+        handleError = _ref.handleError;
     return function (clickEvent) {
       // TODO: Consider safeguarding from the same object being clicked multiple times in rapid succession?
       var clickedElement = clickEvent.target;
@@ -4233,17 +4239,17 @@
 
         return eventManager.sendEvent(event);
       }) // eventManager.sendEvent() will return a promise resolved to an
-        // object and we want to avoid returning any value to the customer
-        .then(noop$1).catch(function (error) {
-          handleError(error, "click collection");
-        });
+      // object and we want to avoid returning any value to the customer
+      .then(noop$1).catch(function (error) {
+        handleError(error, "click collection");
+      });
     };
   };
 
   var attachClickActivityCollector = (function (_ref2) {
     var eventManager = _ref2.eventManager,
-      lifecycle = _ref2.lifecycle,
-      handleError = _ref2.handleError;
+        lifecycle = _ref2.lifecycle,
+        handleError = _ref2.handleError;
     var clickHandler = createClickHandler({
       eventManager: eventManager,
       lifecycle: lifecycle,
@@ -4287,7 +4293,7 @@
     var loc = window.location;
     var url = element.href ? element.href : "";
     var protocol = element.protocol,
-      host = element.host;
+        host = element.host;
 
     if (!urlStartsWithScheme(url)) {
       if (!protocol) {
@@ -4431,8 +4437,8 @@
 
   var createActivityCollector = function createActivityCollector(_ref) {
     var config = _ref.config,
-      eventManager = _ref.eventManager,
-      handleError = _ref.handleError;
+        eventManager = _ref.eventManager,
+        handleError = _ref.handleError;
     var linkClick = createLinkClick(window, config);
     return {
       lifecycle: {
@@ -4447,7 +4453,7 @@
         },
         onClick: function onClick(_ref2) {
           var event = _ref2.event,
-            clickedElement = _ref2.clickedElement;
+              clickedElement = _ref2.clickedElement;
           linkClick(event, clickedElement);
         }
       }
@@ -4475,7 +4481,7 @@
 
   var injectProcessIdSyncs = (function (_ref) {
     var fireReferrerHideableImage = _ref.fireReferrerHideableImage,
-      logger = _ref.logger;
+        logger = _ref.logger;
     return function (idSyncs) {
       var urlIdSyncs = idSyncs.filter(function (idSync) {
         return idSync.type === "url";
@@ -4566,23 +4572,23 @@
 
   var createComponent$4 = (function (_ref) {
     var addEcidQueryToPayload = _ref.addEcidQueryToPayload,
-      addQueryStringIdentityToPayload = _ref.addQueryStringIdentityToPayload,
-      ensureSingleIdentity = _ref.ensureSingleIdentity,
-      setLegacyEcid = _ref.setLegacyEcid,
-      handleResponseForIdSyncs = _ref.handleResponseForIdSyncs,
-      getEcidFromResponse = _ref.getEcidFromResponse,
-      getIdentity = _ref.getIdentity,
-      consent = _ref.consent,
-      appendIdentityToUrl = _ref.appendIdentityToUrl,
-      logger = _ref.logger;
+        addQueryStringIdentityToPayload = _ref.addQueryStringIdentityToPayload,
+        ensureSingleIdentity = _ref.ensureSingleIdentity,
+        setLegacyEcid = _ref.setLegacyEcid,
+        handleResponseForIdSyncs = _ref.handleResponseForIdSyncs,
+        getEcidFromResponse = _ref.getEcidFromResponse,
+        getIdentity = _ref.getIdentity,
+        consent = _ref.consent,
+        appendIdentityToUrl = _ref.appendIdentityToUrl,
+        logger = _ref.logger;
     var ecid;
     var edge = {};
     return {
       lifecycle: {
         onBeforeRequest: function onBeforeRequest(_ref2) {
           var request = _ref2.request,
-            onResponse = _ref2.onResponse,
-            onRequestFailure = _ref2.onRequestFailure;
+              onResponse = _ref2.onResponse,
+              onRequestFailure = _ref2.onRequestFailure;
           // Querying the ECID on every request to be able to set the legacy cookie, and make it
           // available for the `getIdentity` command.
           addEcidQueryToPayload(request.getPayload());
@@ -4663,12 +4669,12 @@
    */
   var createLegacyIdentity = (function (_ref) {
     var config = _ref.config,
-      getEcidFromVisitor = _ref.getEcidFromVisitor,
-      apexDomain = _ref.apexDomain,
-      isPageSsl = _ref.isPageSsl,
-      cookieJar = _ref.cookieJar;
+        getEcidFromVisitor = _ref.getEcidFromVisitor,
+        apexDomain = _ref.apexDomain,
+        isPageSsl = _ref.isPageSsl,
+        cookieJar = _ref.cookieJar;
     var idMigrationEnabled = config.idMigrationEnabled,
-      orgId = config.orgId;
+        orgId = config.orgId;
     var amcvCookieName = "AMCV_" + orgId;
 
     var getEcidFromLegacyCookies = function getEcidFromLegacyCookies() {
@@ -4779,11 +4785,10 @@
   */
   var injectGetEcidFromVisitor = (function (_ref) {
     var logger = _ref.logger,
-      orgId = _ref.orgId,
-      awaitVisitorOptIn = _ref.awaitVisitorOptIn;
+        orgId = _ref.orgId,
+        awaitVisitorOptIn = _ref.awaitVisitorOptIn;
+    var Visitor = getVisitor(window);
     return function () {
-      var Visitor = getVisitor(window);
-
       if (Visitor) {
         // Need to explicitly wait for optIn because visitor will call callback
         // with invalid values prior to optIn being approved
@@ -4846,10 +4851,10 @@
   // TO-DOCUMENT: We queue subsequent requests until we have an identity cookie.
   var injectEnsureSingleIdentity = (function (_ref) {
     var doesIdentityCookieExist = _ref.doesIdentityCookieExist,
-      setDomainForInitialIdentityPayload = _ref.setDomainForInitialIdentityPayload,
-      addLegacyEcidToPayload = _ref.addLegacyEcidToPayload,
-      awaitIdentityCookie = _ref.awaitIdentityCookie,
-      logger = _ref.logger;
+        setDomainForInitialIdentityPayload = _ref.setDomainForInitialIdentityPayload,
+        addLegacyEcidToPayload = _ref.addLegacyEcidToPayload,
+        awaitIdentityCookie = _ref.awaitIdentityCookie,
+        logger = _ref.logger;
     var obtainedIdentityPromise;
 
     var allowRequestToGoWithoutIdentity = function allowRequestToGoWithoutIdentity(request) {
@@ -4879,8 +4884,8 @@
 
     return function (_ref2) {
       var request = _ref2.request,
-        onResponse = _ref2.onResponse,
-        onRequestFailure = _ref2.onRequestFailure;
+          onResponse = _ref2.onResponse,
+          onRequestFailure = _ref2.onRequestFailure;
 
       if (doesIdentityCookieExist()) {
         request.setIsIdentityEstablished();
@@ -4909,11 +4914,11 @@
           logger.info("Resuming previously delayed request.");
           request.setIsIdentityEstablished();
         }) // If Konductor did not set the identity cookie on the previous
-          // request, then awaitIdentityCookie will reject its promise.
-          // Catch the rejection here and allow this request to go out.
-          .catch(function () {
-            return allowRequestToGoWithoutIdentity(request);
-          });
+        // request, then awaitIdentityCookie will reject its promise.
+        // Catch the rejection here and allow this request to go out.
+        .catch(function () {
+          return allowRequestToGoWithoutIdentity(request);
+        });
       } // For Alloy+Konductor communication to be as robust as possible and
       // to ensure we don't mint new ECIDs for requests that would otherwise
       // be sent in parallel, we'll let this request go out to fetch the
@@ -4996,7 +5001,7 @@
   */
   var injectSetDomainForInitialIdentityPayload = (function (_ref) {
     var thirdPartyCookiesEnabled = _ref.thirdPartyCookiesEnabled,
-      areThirdPartyCookiesSupportedByDefault = _ref.areThirdPartyCookiesSupportedByDefault;
+        areThirdPartyCookiesSupportedByDefault = _ref.areThirdPartyCookiesSupportedByDefault;
     return function (request) {
       if (thirdPartyCookiesEnabled && areThirdPartyCookiesSupportedByDefault(getBrowser(window))) {
         // If third-party cookies are enabled by the customer and
@@ -5026,7 +5031,7 @@
   */
   var injectAddLegacyEcidToPayload = (function (_ref) {
     var getLegacyEcid = _ref.getLegacyEcid,
-      addEcidToPayload = _ref.addEcidToPayload;
+        addEcidToPayload = _ref.addEcidToPayload;
     return function (payload) {
       if (payload.hasIdentity(ecidNamespace)) {
         // don't get the legacy identity if we already have the query string identity or if
@@ -5059,9 +5064,9 @@
 
   var injectAddQueryStringIdentityToPayload = (function (_ref) {
     var locationSearch = _ref.locationSearch,
-      dateProvider = _ref.dateProvider,
-      orgId = _ref.orgId,
-      logger = _ref.logger;
+        dateProvider = _ref.dateProvider,
+        orgId = _ref.orgId,
+        logger = _ref.logger;
     return function (payload) {
       if (payload.hasIdentity(ecidNamespace)) {
         // don't overwrite a user provided ecid identity
@@ -5077,9 +5082,9 @@
 
       var properties = queryStringValue.split("|").reduce(function (memo, keyValue) {
         var _keyValue$split = keyValue.split("="),
-          _keyValue$split2 = _slicedToArray(_keyValue$split, 2),
-          key = _keyValue$split2[0],
-          value = _keyValue$split2[1];
+            _keyValue$split2 = _slicedToArray(_keyValue$split, 2),
+            key = _keyValue$split2[0],
+            value = _keyValue$split2[1];
 
         memo[key] = value;
         return memo;
@@ -5090,8 +5095,8 @@
       var mcorgid = decodeURIComponent(properties.MCORGID);
 
       if ( // When TS is not specified or not a number, the following inequality returns false.
-        // All inequalities with NaN variables are false.
-        dateProvider().getTime() / 1000 <= ts + LINK_TTL_SECONDS && mcorgid === orgId && mcmid) {
+      // All inequalities with NaN variables are false.
+      dateProvider().getTime() / 1000 <= ts + LINK_TTL_SECONDS && mcorgid === orgId && mcmid) {
         logger.info("Found valid ECID identity " + mcmid + " from the adobe_mc query string parameter.");
         payload.addIdentity(ecidNamespace, {
           id: mcmid
@@ -5132,7 +5137,7 @@
   */
   var injectAwaitIdentityCookie = (function (_ref) {
     var doesIdentityCookieExist = _ref.doesIdentityCookieExist,
-      orgId = _ref.orgId;
+        orgId = _ref.orgId;
 
     /**
      * Returns a promise that will be resolved once an identity cookie exists.
@@ -5141,7 +5146,7 @@
      */
     return function (_ref2) {
       var onResponse = _ref2.onResponse,
-        onRequestFailure = _ref2.onRequestFailure;
+          onRequestFailure = _ref2.onRequestFailure;
       return new Promise(function (resolve, reject) {
         onResponse(function () {
           if (doesIdentityCookieExist()) {
@@ -5204,8 +5209,8 @@
   */
   var createGetIdentity = (function (_ref) {
     var sendEdgeNetworkRequest = _ref.sendEdgeNetworkRequest,
-      createIdentityRequestPayload = _ref.createIdentityRequestPayload,
-      createIdentityRequest = _ref.createIdentityRequest;
+        createIdentityRequestPayload = _ref.createIdentityRequestPayload,
+        createIdentityRequest = _ref.createIdentityRequest;
     return function (namespaces) {
       var payload = createIdentityRequestPayload(namespaces);
       var request = createIdentityRequest(payload);
@@ -5249,8 +5254,8 @@
 
   var createRequest = (function (options) {
     var payload = options.payload,
-      _getAction = options.getAction,
-      _getUseSendBeacon = options.getUseSendBeacon;
+        _getAction = options.getAction,
+        _getUseSendBeacon = options.getUseSendBeacon;
     var id = v4_1();
     var shouldUseThirdPartyDomain = false;
     var isIdentityEstablished = false;
@@ -5361,10 +5366,9 @@
 
   var createRequestPayload = (function (options) {
     var content = options.content,
-      addIdentity = options.addIdentity,
-      hasIdentity = options.hasIdentity;
+        addIdentity = options.addIdentity,
+        hasIdentity = options.hasIdentity;
     return {
-      mergeMeta: createMerger(content, "meta"),
       mergeState: createMerger(content, "meta.state"),
       mergeQuery: createMerger(content, "query"),
       addIdentity: addIdentity,
@@ -5423,52 +5427,6 @@
     };
 
     return payload;
-  });
-
-  /*
-  Copyright 2022 Adobe. All rights reserved.
-  This file is licensed to you under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License. You may obtain a copy
-  of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software distributed under
-  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-  OF ANY KIND, either express or implied. See the License for the specific language
-  governing permissions and limitations under the License.
-  */
-  var ASSURANCE_VALIDATION_SESSION_URL_PARAM = "adb_validation_sessionid";
-  var ASSURANCE_VALIDATION_NAMESPACE = "validation.";
-  var CLIENT_ID = "clientId";
-
-  var getOrCreateAssuranceClientId = function getOrCreateAssuranceClientId(storage) {
-    var clientId = storage.persistent.getItem(CLIENT_ID);
-
-    if (!clientId) {
-      clientId = v4_1();
-      storage.persistent.setItem(CLIENT_ID, clientId);
-    }
-
-    return clientId;
-  };
-
-  var createGetAssuranceValidationTokenParams = (function (_ref) {
-    var window = _ref.window,
-      createNamespacedStorage = _ref.createNamespacedStorage;
-    var storage = createNamespacedStorage(ASSURANCE_VALIDATION_NAMESPACE);
-    return function () {
-      var parsedQuery = reactorQueryString.parse(window.location.search);
-      var validationSessionId = parsedQuery[ASSURANCE_VALIDATION_SESSION_URL_PARAM];
-
-      if (!validationSessionId) {
-        return "";
-      }
-
-      var clientId = getOrCreateAssuranceClientId(storage);
-      var validationToken = validationSessionId + "|" + clientId;
-      return "&" + reactorQueryString.stringify({
-        adobeAepValidationToken: validationToken
-      });
-    };
   });
 
   /*
@@ -5547,16 +5505,16 @@
 
   var injectAppendIdentityToUrl = (function (_ref) {
     var dateProvider = _ref.dateProvider,
-      orgId = _ref.orgId;
+        orgId = _ref.orgId;
     return function (ecid, url) {
       var ts = Math.round(dateProvider().getTime() / 1000);
       var adobemc = encodeURIComponent("TS=" + ts + "|MCMID=" + ecid + "|MCORGID=" + encodeURIComponent(orgId));
 
       var _url$match = url.match(URL_REGEX),
-        _url$match2 = _slicedToArray(_url$match, 4),
-        location = _url$match2[1],
-        queryString = _url$match2[2],
-        fragment = _url$match2[3];
+          _url$match2 = _slicedToArray(_url$match, 4),
+          location = _url$match2[1],
+          queryString = _url$match2[2],
+          fragment = _url$match2[3];
 
       var separator = getSeparator(queryString);
       return "" + location + queryString + separator + "adobe_mc=" + adobemc + fragment;
@@ -5577,13 +5535,13 @@
 
   var createIdentity = function createIdentity(_ref) {
     var config = _ref.config,
-      logger = _ref.logger,
-      consent = _ref.consent,
-      fireReferrerHideableImage = _ref.fireReferrerHideableImage,
-      sendEdgeNetworkRequest = _ref.sendEdgeNetworkRequest,
-      apexDomain = _ref.apexDomain;
+        logger = _ref.logger,
+        consent = _ref.consent,
+        fireReferrerHideableImage = _ref.fireReferrerHideableImage,
+        sendEdgeNetworkRequest = _ref.sendEdgeNetworkRequest,
+        apexDomain = _ref.apexDomain;
     var orgId = config.orgId,
-      thirdPartyCookiesEnabled = config.thirdPartyCookiesEnabled;
+        thirdPartyCookiesEnabled = config.thirdPartyCookiesEnabled;
     var getEcidFromVisitor = injectGetEcidFromVisitor({
       logger: logger,
       orgId: orgId,
@@ -5671,9 +5629,9 @@
 
   var injectProcessDestinations = (function (_ref) {
     var fireReferrerHideableImage = _ref.fireReferrerHideableImage,
-      logger = _ref.logger,
-      cookieJar = _ref.cookieJar,
-      isPageSsl = _ref.isPageSsl;
+        logger = _ref.logger,
+        cookieJar = _ref.cookieJar,
+        isPageSsl = _ref.isPageSsl;
     var extraCookieOptions = isPageSsl ? {
       sameSite: "none",
       secure: true
@@ -5685,10 +5643,10 @@
       });
       cookieDestinations.forEach(function (dest) {
         var _dest$spec = dest.spec,
-          name = _dest$spec.name,
-          value = _dest$spec.value,
-          domain = _dest$spec.domain,
-          ttlDays = _dest$spec.ttlDays;
+            name = _dest$spec.name,
+            value = _dest$spec.value,
+            domain = _dest$spec.domain,
+            ttlDays = _dest$spec.ttlDays;
         cookieJar.set(name, value || "", _objectSpread2({
           domain: domain || "",
           expires: ttlDays || 10
@@ -5703,9 +5661,11 @@
       return Promise.all(urlDestinations.map(function (urlDestination) {
         return fireReferrerHideableImage(urlDestination.spec).then(function () {
           logger.info(createResultLogMessage(urlDestination, true));
-        }).catch(function () {// We intentionally do not throw an error if destinations fail. We
+        }).catch(function () {
+          // We intentionally do not throw an error if destinations fail. We
           // consider it a non-critical failure and therefore do not want it to
           // reject the promise handed back to the customer.
+          logger.error(createResultLogMessage(urlDestination, false));
         });
       })).then(noop$1);
     };
@@ -5769,7 +5729,7 @@
 
   var createAudiences = function createAudiences(_ref) {
     var logger = _ref.logger,
-      fireReferrerHideableImage = _ref.fireReferrerHideableImage;
+        fireReferrerHideableImage = _ref.fireReferrerHideableImage;
     var loggingCookieJar = createLoggingCookieJar({
       logger: logger,
       cookieJar: reactorCookie
@@ -5837,30 +5797,18 @@
     return path.substring(0, end) || "/";
   };
 
-  var getSurfaceType = function getSurfaceType(surfaceTypeMatch) {
-    return isNonEmptyString(surfaceTypeMatch) ? surfaceTypeMatch.toLowerCase() : "";
-  };
-
-  var getAuthority = function getAuthority(authorityMatch) {
-    return isNonEmptyString(authorityMatch) ? authorityMatch.toLowerCase() : "";
-  };
-
-  var getPath = function getPath(pathMatch) {
-    return isNonEmptyString(pathMatch) ? normalizePath(pathMatch) : "/";
-  };
-
   var parseSurface = function parseSurface(surfaceString) {
     var matched = surfaceString.match(SURFACE_REGEX);
     return matched ? {
-      surfaceType: getSurfaceType(matched[1]),
-      authority: getAuthority(matched[2]),
-      path: getPath(matched[3]),
+      surfaceType: isNonEmptyString(matched[1]) ? matched[1].toLowerCase() : "",
+      authority: isNonEmptyString(matched[2]) ? matched[2].toLowerCase() : "",
+      path: isNonEmptyString(matched[3]) ? normalizePath(matched[3]) : "/",
       fragment: matched[4]
     } : null;
   };
 
   var stringifySurface = function stringifySurface(surface) {
-    return "" + surface.surfaceType + SURFACE_TYPE_DELIMITER + surface.authority + (surface.path || "") + (surface.fragment || "");
+    return surface.surfaceType + SURFACE_TYPE_DELIMITER + surface.authority + (surface.path || "") + (surface.fragment || "");
   };
 
   var buildPageSurface = function buildPageSurface(getPageLocation) {
@@ -5969,20 +5917,14 @@
     }
   };
 
-  var dedupe = function dedupe(array) {
-    return array.filter(function (item, pos) {
-      return array.indexOf(item) === pos;
-    });
-  };
-
   var createPersonalizationDetails = (function (_ref) {
     var getPageLocation = _ref.getPageLocation,
-      renderDecisions = _ref.renderDecisions,
-      decisionScopes = _ref.decisionScopes,
-      personalization = _ref.personalization,
-      event = _ref.event,
-      viewCache = _ref.viewCache,
-      logger = _ref.logger;
+        renderDecisions = _ref.renderDecisions,
+        decisionScopes = _ref.decisionScopes,
+        personalization = _ref.personalization,
+        event = _ref.event,
+        viewCache = _ref.viewCache,
+        logger = _ref.logger;
     var viewName = event.getViewName();
     return {
       isRenderDecisions: function isRenderDecisions() {
@@ -6022,8 +5964,8 @@
 
         return {
           schemas: schemas,
-          decisionScopes: dedupe(scopes),
-          surfaces: dedupe(eventSurfaces)
+          decisionScopes: _toConsumableArray(new Set(scopes)),
+          surfaces: _toConsumableArray(new Set(eventSurfaces))
         };
       },
       isCacheInitialized: function isCacheInitialized() {
@@ -6046,7 +5988,7 @@
   };
   var validateApplyPropositionsOptions = (function (_ref) {
     var logger = _ref.logger,
-      options = _ref.options;
+        options = _ref.options;
     var applyPropositionsOptionsValidator = boundObjectOf({
       propositions: boundArrayOf(boundObjectOf(boundAnything())).nonEmpty(),
       metadata: boundObjectOf(boundAnything())
@@ -6073,34 +6015,28 @@
   */
   var createComponent$3 = (function (_ref) {
     var getPageLocation = _ref.getPageLocation,
-      logger = _ref.logger,
-      fetchDataHandler = _ref.fetchDataHandler,
-      viewChangeHandler = _ref.viewChangeHandler,
-      onClickHandler = _ref.onClickHandler,
-      isAuthoringModeEnabled = _ref.isAuthoringModeEnabled,
-      mergeQuery = _ref.mergeQuery,
-      viewCache = _ref.viewCache,
-      showContainers = _ref.showContainers,
-      applyPropositions = _ref.applyPropositions,
-      setTargetMigration = _ref.setTargetMigration;
+        logger = _ref.logger,
+        fetchDataHandler = _ref.fetchDataHandler,
+        viewChangeHandler = _ref.viewChangeHandler,
+        onClickHandler = _ref.onClickHandler,
+        isAuthoringModeEnabled = _ref.isAuthoringModeEnabled,
+        mergeQuery = _ref.mergeQuery,
+        viewCache = _ref.viewCache,
+        showContainers = _ref.showContainers,
+        applyPropositions = _ref.applyPropositions;
     return {
       lifecycle: {
-        onBeforeRequest: function onBeforeRequest(_ref2) {
-          var request = _ref2.request;
-          setTargetMigration(request);
-          return Promise.resolve();
-        },
-        onBeforeEvent: function onBeforeEvent(_ref3) {
-          var event = _ref3.event,
-            renderDecisions = _ref3.renderDecisions,
-            _ref3$decisionScopes = _ref3.decisionScopes,
-            decisionScopes = _ref3$decisionScopes === void 0 ? [] : _ref3$decisionScopes,
-            _ref3$personalization = _ref3.personalization,
-            personalization = _ref3$personalization === void 0 ? {} : _ref3$personalization,
-            _ref3$onResponse = _ref3.onResponse,
-            onResponse = _ref3$onResponse === void 0 ? noop$1 : _ref3$onResponse,
-            _ref3$onRequestFailur = _ref3.onRequestFailure,
-            onRequestFailure = _ref3$onRequestFailur === void 0 ? noop$1 : _ref3$onRequestFailur;
+        onBeforeEvent: function onBeforeEvent(_ref2) {
+          var event = _ref2.event,
+              renderDecisions = _ref2.renderDecisions,
+              _ref2$decisionScopes = _ref2.decisionScopes,
+              decisionScopes = _ref2$decisionScopes === void 0 ? [] : _ref2$decisionScopes,
+              _ref2$personalization = _ref2.personalization,
+              personalization = _ref2$personalization === void 0 ? {} : _ref2$personalization,
+              _ref2$onResponse = _ref2.onResponse,
+              onResponse = _ref2$onResponse === void 0 ? noop$1 : _ref2$onResponse,
+              _ref2$onRequestFailur = _ref2.onRequestFailure,
+              onRequestFailure = _ref2$onRequestFailur === void 0 ? noop$1 : _ref2$onRequestFailur;
           // Include propositions on all responses, overridden with data as needed
           onResponse(function () {
             return {
@@ -6155,9 +6091,9 @@
             });
           }
         },
-        onClick: function onClick(_ref4) {
-          var event = _ref4.event,
-            clickedElement = _ref4.clickedElement;
+        onClick: function onClick(_ref3) {
+          var event = _ref3.event,
+              clickedElement = _ref3.clickedElement;
           onClickHandler({
             event: event,
             clickedElement: clickedElement
@@ -6233,20 +6169,20 @@
           }
 
           if ( // If the character is in the range [\1-\1F] (U+0001 to U+001F) or is
-            // U+007F, […]
-            codeUnit >= 0x0001 && codeUnit <= 0x001F || codeUnit == 0x007F || // If the character is the first character and is in the range [0-9]
-            // (U+0030 to U+0039), […]
-            index == 0 && codeUnit >= 0x0030 && codeUnit <= 0x0039 || // If the character is the second character and is in the range [0-9]
-            // (U+0030 to U+0039) and the first character is a `-` (U+002D), […]
-            index == 1 && codeUnit >= 0x0030 && codeUnit <= 0x0039 && firstCodeUnit == 0x002D) {
+          // U+007F, […]
+          codeUnit >= 0x0001 && codeUnit <= 0x001F || codeUnit == 0x007F || // If the character is the first character and is in the range [0-9]
+          // (U+0030 to U+0039), […]
+          index == 0 && codeUnit >= 0x0030 && codeUnit <= 0x0039 || // If the character is the second character and is in the range [0-9]
+          // (U+0030 to U+0039) and the first character is a `-` (U+002D), […]
+          index == 1 && codeUnit >= 0x0030 && codeUnit <= 0x0039 && firstCodeUnit == 0x002D) {
             // https://drafts.csswg.org/cssom/#escape-a-character-as-code-point
             result += '\\' + codeUnit.toString(16) + ' ';
             continue;
           }
 
           if ( // If the character is the first character and is a `-` (U+002D), and
-            // there is no second character, […]
-            index == 0 && length == 1 && codeUnit == 0x002D) {
+          // there is no second character, […]
+          index == 0 && length == 1 && codeUnit == 0x002D) {
             result += '\\' + string.charAt(index);
             continue;
           } // If the character is not handled by one of the above rules and is
@@ -6358,8 +6294,8 @@
 
     while (i < length) {
       var _parts$i = parts[i],
-        sel = _parts$i.sel,
-        eq = _parts$i.eq;
+          sel = _parts$i.sel,
+          eq = _parts$i.eq;
       var nodes = selectNodes(sel, context);
       var nodesCount = nodes.length;
 
@@ -7085,12 +7021,12 @@
 
 
   Promise$1._immediateFn = // @ts-ignore
-    typeof setImmediate === 'function' && function (fn) {
-      // @ts-ignore
-      setImmediate(fn);
-    } || function (fn) {
-      setTimeoutFunc(fn, 0);
-    };
+  typeof setImmediate === 'function' && function (fn) {
+    // @ts-ignore
+    setImmediate(fn);
+  } || function (fn) {
+    setTimeoutFunc(fn, 0);
+  };
 
   Promise$1._unhandledRejectionFn = function _unhandledRejectionFn(err) {
     if (typeof console !== 'undefined' && console) {
@@ -7364,7 +7300,7 @@
   var _excluded$1 = ["priority"];
   var setStyles = (function (container, styles) {
     var priority = styles.priority,
-      style = _objectWithoutProperties(styles, _excluded$1);
+        style = _objectWithoutProperties(styles, _excluded$1);
 
     Object.keys(style).forEach(function (key) {
       setStyle(container, key, style[key], priority);
@@ -7425,7 +7361,7 @@
   */
   var rearrangeChildren = (function (container, _ref) {
     var from = _ref.from,
-      to = _ref.to;
+        to = _ref.to;
     var children = getChildren(container);
     var elementFrom = children[from];
     var elementTo = children[to];
@@ -7456,7 +7392,7 @@
   */
   var _click = (function (settings, store) {
     var selector = settings.selector,
-      meta = settings.meta;
+        meta = settings.meta;
     store({
       selector: selector,
       meta: meta
@@ -7486,9 +7422,9 @@
   var createAction = function createAction(renderFunc) {
     return function (settings) {
       var selector = settings.selector,
-        prehidingSelector = settings.prehidingSelector,
-        content = settings.content,
-        meta = settings.meta;
+          prehidingSelector = settings.prehidingSelector,
+          content = settings.content,
+          meta = settings.meta;
       hideElements(prehidingSelector);
       return awaitSelector(selector, selectNodesWithEq).then(function (elements) {
         return renderContent(elements, content, renderFunc);
@@ -7592,10 +7528,10 @@
     }).join("");
   };
 
-  var remapHeadOffers = (function (action) {
+  var preprocess = (function (action) {
     var result = reactorObjectAssign({}, action);
     var content = result.content,
-      selector = result.selector;
+        selector = result.selector;
 
     if (isBlankString(content)) {
       return result;
@@ -7612,41 +7548,11 @@
     return result;
   });
 
-  /*
-  Copyright 2021 Adobe. All rights reserved.
-  This file is licensed to you under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License. You may obtain a copy
-  of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software distributed under
-  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-  OF ANY KIND, either express or implied. See the License for the specific language
-  governing permissions and limitations under the License.
-  */
-  var ACTION_CUSTOM_CODE = "customCode";
-  var TARGET_BODY_SELECTOR = "BODY > *:eq(0)";
-  var remapCustomCodeOffers = (function (action) {
-    var selector = action.selector,
-      type = action.type;
-
-    if (type !== ACTION_CUSTOM_CODE) {
-      return action;
-    }
-
-    if (selector !== TARGET_BODY_SELECTOR) {
-      return action;
-    }
-
-    return reactorObjectAssign({}, action, {
-      selector: "BODY"
-    });
-  });
-
   var logActionError = function logActionError(logger, action, error) {
     if (logger.enabled) {
       var details = JSON.stringify(action);
       var message = error.message,
-        stack = error.stack;
+          stack = error.stack;
       var errorMessage = "Failed to execute action " + details + ". " + message + " " + (stack ? "\n " + stack : "");
       logger.error(errorMessage);
     }
@@ -7669,14 +7575,6 @@
     }
 
     return execute.apply(void 0, _toConsumableArray(args));
-  };
-
-  var PREPROCESSORS = [remapHeadOffers, remapCustomCodeOffers];
-
-  var preprocess = function preprocess(action) {
-    return PREPROCESSORS.reduce(function (processed, fn) {
-      return reactorObjectAssign(processed, fn(processed));
-    }, action);
   };
 
   var executeActions = (function (actions, modules, logger) {
@@ -7709,22 +7607,6 @@
   var INTERACT = "decisioning.propositionInteract";
 
   /*
-  Copyright 2022 Adobe. All rights reserved.
-  This file is licensed to you under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License. You may obtain a copy
-  of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software distributed under
-  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-  OF ANY KIND, either express or implied. See the License for the specific language
-  governing permissions and limitations under the License.
-  */
-  var PropositionEventType = {
-    DISPLAY: "display",
-    INTERACT: "interact"
-  };
-
-  /*
   Copyright 2020 Adobe. All rights reserved.
   This file is licensed to you under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License. You may obtain a copy
@@ -7737,14 +7619,14 @@
   */
   var createCollect = (function (_ref) {
     var eventManager = _ref.eventManager,
-      mergeDecisionsMeta = _ref.mergeDecisionsMeta;
+        mergeDecisionsMeta = _ref.mergeDecisionsMeta;
     // Called when a decision is auto-rendered for the __view__ scope or a SPA view(display and empty display notification)
     return function (_ref2) {
       var _ref2$decisionsMeta = _ref2.decisionsMeta,
-        decisionsMeta = _ref2$decisionsMeta === void 0 ? [] : _ref2$decisionsMeta,
-        _ref2$documentMayUnlo = _ref2.documentMayUnload,
-        documentMayUnload = _ref2$documentMayUnlo === void 0 ? false : _ref2$documentMayUnlo,
-        viewName = _ref2.viewName;
+          decisionsMeta = _ref2$decisionsMeta === void 0 ? [] : _ref2$decisionsMeta,
+          _ref2$documentMayUnlo = _ref2.documentMayUnload,
+          documentMayUnload = _ref2$documentMayUnlo === void 0 ? false : _ref2$documentMayUnlo,
+          viewName = _ref2.viewName;
       var event = eventManager.createEvent();
       var data = {
         eventType: DISPLAY
@@ -7759,7 +7641,7 @@
       }
 
       if (isNonEmptyArray(decisionsMeta)) {
-        mergeDecisionsMeta(event, decisionsMeta, PropositionEventType.DISPLAY);
+        mergeDecisionsMeta(event, decisionsMeta);
       }
 
       event.mergeXdm(data);
@@ -7789,14 +7671,8 @@
     return item;
   };
 
-  var getItemMeta = function getItemMeta(item, decisionMeta) {
-    return item.characteristics && item.characteristics.trackingLabel ? reactorObjectAssign({
-      trackingLabel: item.characteristics.trackingLabel
-    }, decisionMeta) : decisionMeta;
-  };
-
   var buildActions = function buildActions(decision) {
-    var decisionMeta = {
+    var meta = {
       id: decision.id,
       scope: decision.scope,
       scopeDetails: decision.scopeDetails
@@ -7805,7 +7681,7 @@
       return reactorObjectAssign({
         type: DEFAULT_ACTION_TYPE
       }, item.data, {
-        meta: getItemMeta(item, decisionMeta)
+        meta: meta
       });
     });
   };
@@ -7839,8 +7715,8 @@
 
   var createExecuteDecisions = (function (_ref) {
     var modules = _ref.modules,
-      logger = _ref.logger,
-      executeActions = _ref.executeActions;
+        logger = _ref.logger,
+        executeActions = _ref.executeActions;
     return function (decisions) {
       var actionResultsPromises = decisions.map(function (decision) {
         var actions = buildActions(decision);
@@ -7866,15 +7742,16 @@
   governing permissions and limitations under the License.
   */
   var createFetchDataHandler = (function (_ref) {
-    var prehidingStyle = _ref.prehidingStyle,
-      responseHandler = _ref.responseHandler,
-      hideContainers = _ref.hideContainers,
-      mergeQuery = _ref.mergeQuery;
+    var config = _ref.config,
+        responseHandler = _ref.responseHandler,
+        hideContainers = _ref.hideContainers,
+        mergeQuery = _ref.mergeQuery;
     return function (_ref2) {
       var decisionsDeferred = _ref2.decisionsDeferred,
-        personalizationDetails = _ref2.personalizationDetails,
-        event = _ref2.event,
-        onResponse = _ref2.onResponse;
+          personalizationDetails = _ref2.personalizationDetails,
+          event = _ref2.event,
+          onResponse = _ref2.onResponse;
+      var prehidingStyle = config.prehidingStyle;
 
       if (personalizationDetails.isRenderDecisions()) {
         hideContainers(prehidingStyle);
@@ -7926,83 +7803,32 @@
 
   var getMetasIfMatches = function getMetasIfMatches(clickedElement, selector, getClickMetasBySelector) {
     var _document = document,
-      documentElement = _document.documentElement;
+        documentElement = _document.documentElement;
     var element = clickedElement;
-    var i = 0;
 
     while (element && element !== documentElement) {
       if (matchesSelectorWithEq(selector, element)) {
-        var matchedMetas = getClickMetasBySelector(selector);
-        var foundMetaWithLabel = matchedMetas.find(function (meta) {
-          return meta.trackingLabel;
-        });
-
-        if (foundMetaWithLabel) {
-          return {
-            metas: matchedMetas,
-            label: foundMetaWithLabel.trackingLabel,
-            weight: i
-          };
-        }
-
-        return {
-          metas: matchedMetas
-        };
+        return getClickMetasBySelector(selector);
       }
 
       element = element.parentNode;
-      i += 1;
     }
 
-    return {
-      metas: null
-    };
-  };
-
-  var cleanMetas = function cleanMetas(metas) {
-    return metas.map(function (meta) {
-      delete meta.trackingLabel;
-      return meta;
-    });
-  };
-
-  var dedupMetas = function dedupMetas(metas) {
-    return metas.filter(function (meta, index) {
-      var stringifiedMeta = JSON.stringify(meta);
-      return index === metas.findIndex(function (innerMeta) {
-        return JSON.stringify(innerMeta) === stringifiedMeta;
-      });
-    });
+    return null;
   };
 
   var collectClicks = (function (clickedElement, selectors, getClickMetasBySelector) {
     var result = [];
-    var resultLabel = "";
-    var resultLabelWeight = Number.MAX_SAFE_INTEGER;
-    /* eslint-disable no-continue */
 
     for (var i = 0; i < selectors.length; i += 1) {
-      var _getMetasIfMatches = getMetasIfMatches(clickedElement, selectors[i], getClickMetasBySelector),
-        metas = _getMetasIfMatches.metas,
-        label = _getMetasIfMatches.label,
-        weight = _getMetasIfMatches.weight;
+      var metas = getMetasIfMatches(clickedElement, selectors[i], getClickMetasBySelector);
 
-      if (!metas) {
-        continue;
+      if (metas) {
+        result.push.apply(result, _toConsumableArray(metas));
       }
-
-      if (label && weight <= resultLabelWeight) {
-        resultLabel = label;
-        resultLabelWeight = weight;
-      }
-
-      result.push.apply(result, _toConsumableArray(cleanMetas(metas)));
     }
 
-    return {
-      decisionsMeta: dedupMetas(result),
-      eventLabel: resultLabel
-    };
+    return result;
   });
 
   /*
@@ -8032,27 +7858,14 @@
   OF ANY KIND, either express or implied. See the License for the specific language
   governing permissions and limitations under the License.
   */
-  var EVENT_TYPE_TRUE = 1;
-  /* eslint-disable no-underscore-dangle */
-
-  var mergeDecisionsMeta = function mergeDecisionsMeta(event, decisionsMeta, eventType) {
-    var eventLabel = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
-    var xdm = {
+  var mergeDecisionsMeta = function mergeDecisionsMeta(event, decisionsMeta) {
+    event.mergeXdm({
       _experience: {
         decisioning: {
-          propositions: decisionsMeta,
-          propositionEventType: _defineProperty({}, eventType, EVENT_TYPE_TRUE)
+          propositions: decisionsMeta
         }
       }
-    };
-
-    if (eventLabel) {
-      xdm._experience.decisioning.propositionAction = {
-        label: eventLabel
-      };
-    }
-
-    event.mergeXdm(xdm);
+    });
   };
   var mergeQuery = function mergeQuery(event, details) {
     event.mergeQuery({
@@ -8073,19 +7886,17 @@
   */
   var createOnClickHandler = (function (_ref) {
     var mergeDecisionsMeta = _ref.mergeDecisionsMeta,
-      collectClicks = _ref.collectClicks,
-      getClickSelectors = _ref.getClickSelectors,
-      getClickMetasBySelector = _ref.getClickMetasBySelector;
+        collectClicks = _ref.collectClicks,
+        getClickSelectors = _ref.getClickSelectors,
+        getClickMetasBySelector = _ref.getClickMetasBySelector;
     // Called when an element qualifying for conversion within an offer is clicked.
     return function (_ref2) {
       var event = _ref2.event,
-        clickedElement = _ref2.clickedElement;
+          clickedElement = _ref2.clickedElement;
       var selectors = getClickSelectors();
 
       if (isNonEmptyArray(selectors)) {
-        var _collectClicks = collectClicks(clickedElement, selectors, getClickMetasBySelector),
-          decisionsMeta = _collectClicks.decisionsMeta,
-          eventLabel = _collectClicks.eventLabel;
+        var decisionsMeta = collectClicks(clickedElement, selectors, getClickMetasBySelector);
 
         if (isNonEmptyArray(decisionsMeta)) {
           var xdm = {
@@ -8102,7 +7913,7 @@
           }
 
           event.mergeXdm(xdm);
-          mergeDecisionsMeta(event, decisionsMeta, PropositionEventType.INTERACT, eventLabel);
+          mergeDecisionsMeta(event, decisionsMeta);
         }
       }
     };
@@ -8170,7 +7981,7 @@
   */
   var addRenderAttemptedToDecisions = (function (_ref) {
     var decisions = _ref.decisions,
-      renderAttempted = _ref.renderAttempted;
+        renderAttempted = _ref.renderAttempted;
     return decisions.map(function (decision) {
       return reactorObjectAssign({
         renderAttempted: renderAttempted
@@ -8208,20 +8019,20 @@
   */
   var createViewChangeHandler = (function (_ref) {
     var mergeDecisionsMeta = _ref.mergeDecisionsMeta,
-      collect = _ref.collect,
-      executeDecisions = _ref.executeDecisions,
-      viewCache = _ref.viewCache;
+        collect = _ref.collect,
+        executeDecisions = _ref.executeDecisions,
+        viewCache = _ref.viewCache;
     return function (_ref2) {
       var personalizationDetails = _ref2.personalizationDetails,
-        event = _ref2.event,
-        onResponse = _ref2.onResponse;
+          event = _ref2.event,
+          onResponse = _ref2.onResponse;
       var viewName = personalizationDetails.getViewName();
       return viewCache.getView(viewName).then(function (viewDecisions) {
         if (personalizationDetails.isRenderDecisions()) {
           return executeDecisions(viewDecisions).then(function (decisionsMeta) {
             // if there are decisions to be rendered we render them and attach the result in experience.decisions.propositions
             if (isNonEmptyArray(decisionsMeta)) {
-              mergeDecisionsMeta(event, decisionsMeta, PropositionEventType.DISPLAY);
+              mergeDecisionsMeta(event, decisionsMeta);
               onResponse(function () {
                 return composePersonalizationResultingObject(viewDecisions, true);
               });
@@ -8245,21 +8056,6 @@
         return {};
       });
     };
-  });
-
-  /*
-  Copyright 2022 Adobe. All rights reserved.
-  This file is licensed to you under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License. You may obtain a copy
-  of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software distributed under
-  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-  OF ANY KIND, either express or implied. See the License for the specific language
-  governing permissions and limitations under the License.
-  */
-  var isPageWideScope = (function (scope) {
-    return scope === PAGE_WIDE_SCOPE || isPageWideSurface(scope);
   });
 
   /*
@@ -8300,7 +8096,7 @@
   var splitMergedMetricDecisions = function splitMergedMetricDecisions(decisions) {
     var matchedDecisions = decisions.filter(function (decision) {
       var _decision$items = decision.items,
-        items = _decision$items === void 0 ? [] : _decision$items;
+          items = _decision$items === void 0 ? [] : _decision$items;
       return items.some(function (item) {
         return item.schema === MEASUREMENT_SCHEMA;
       });
@@ -8323,12 +8119,12 @@
     var unmatchedDecisions = [];
     decisions.forEach(function (decision) {
       var _decision$items2 = decision.items,
-        items = _decision$items2 === void 0 ? [] : _decision$items2;
+          items = _decision$items2 === void 0 ? [] : _decision$items2;
 
       var _splitItems = splitItems(items, schemas),
-        _splitItems2 = _slicedToArray(_splitItems, 2),
-        matchedItems = _splitItems2[0],
-        nonMatchedItems = _splitItems2[1];
+          _splitItems2 = _slicedToArray(_splitItems, 2),
+          matchedItems = _splitItems2[0],
+          nonMatchedItems = _splitItems2[1];
 
       if (isNonEmptyArray(matchedItems)) {
         matchedDecisions.push(createDecision(decision, matchedItems));
@@ -8354,6 +8150,10 @@
 
   var isViewScope = function isViewScope(scopeDetails) {
     return scopeDetails.characteristics && scopeDetails.characteristics.scopeType && scopeDetails.characteristics.scopeType === VIEW_SCOPE_TYPE;
+  };
+
+  var isPageWideScope = function isPageWideScope(scope) {
+    return scope === PAGE_WIDE_SCOPE || isPageWideSurface(scope);
   };
 
   var extractDecisionsByScope = function extractDecisionsByScope(decisions) {
@@ -8389,9 +8189,9 @@
     var decisionsGroupedByRenderableSchemas = splitDecisions(mergedMetricDecisions.unmatchedDecisions, DOM_ACTION, DEFAULT_CONTENT_ITEM); // group renderable decisions by scope
 
     var _extractDecisionsBySc = extractDecisionsByScope(decisionsGroupedByRenderableSchemas.matchedDecisions),
-      pageWideScopeDecisions = _extractDecisionsBySc.pageWideScopeDecisions,
-      nonPageWideScopeDecisions = _extractDecisionsBySc.nonPageWideScopeDecisions,
-      viewScopeDecisions = _extractDecisionsBySc.viewScopeDecisions;
+        pageWideScopeDecisions = _extractDecisionsBySc.pageWideScopeDecisions,
+        nonPageWideScopeDecisions = _extractDecisionsBySc.nonPageWideScopeDecisions,
+        viewScopeDecisions = _extractDecisionsBySc.viewScopeDecisions;
 
     return {
       redirectDecisions: decisionsGroupedByRedirectItemSchema.matchedDecisions,
@@ -8415,14 +8215,14 @@
   var DECISIONS_HANDLE = "personalization:decisions";
   var createOnResponseHandler = (function (_ref) {
     var autoRenderingHandler = _ref.autoRenderingHandler,
-      nonRenderingHandler = _ref.nonRenderingHandler,
-      groupDecisions = _ref.groupDecisions,
-      handleRedirectDecisions = _ref.handleRedirectDecisions,
-      showContainers = _ref.showContainers;
+        nonRenderingHandler = _ref.nonRenderingHandler,
+        groupDecisions = _ref.groupDecisions,
+        handleRedirectDecisions = _ref.handleRedirectDecisions,
+        showContainers = _ref.showContainers;
     return function (_ref2) {
       var decisionsDeferred = _ref2.decisionsDeferred,
-        personalizationDetails = _ref2.personalizationDetails,
-        response = _ref2.response;
+          personalizationDetails = _ref2.personalizationDetails,
+          response = _ref2.response;
       var unprocessedDecisions = response.getPayloadsByType(DECISIONS_HANDLE);
       var viewName = personalizationDetails.getViewName(); // if personalization payload is empty return empty decisions array
 
@@ -8436,10 +8236,10 @@
       }
 
       var _groupDecisions = groupDecisions(unprocessedDecisions),
-        redirectDecisions = _groupDecisions.redirectDecisions,
-        pageWideScopeDecisions = _groupDecisions.pageWideScopeDecisions,
-        viewDecisions = _groupDecisions.viewDecisions,
-        nonAutoRenderableDecisions = _groupDecisions.nonAutoRenderableDecisions;
+          redirectDecisions = _groupDecisions.redirectDecisions,
+          pageWideScopeDecisions = _groupDecisions.pageWideScopeDecisions,
+          viewDecisions = _groupDecisions.viewDecisions,
+          nonAutoRenderableDecisions = _groupDecisions.nonAutoRenderableDecisions;
 
       if (personalizationDetails.isRenderDecisions() && isNonEmptyArray(redirectDecisions)) {
         decisionsDeferred.resolve({});
@@ -8482,8 +8282,7 @@
       return {
         id: key,
         scope: metas[key].scope,
-        scopeDetails: metas[key].scopeDetails,
-        trackingLabel: metas[key].trackingLabel
+        scopeDetails: metas[key].scopeDetails
       };
     });
   };
@@ -8498,8 +8297,7 @@
 
       clickStorage[value.selector][value.meta.id] = {
         scope: value.meta.scope,
-        scopeDetails: value.meta.scopeDetails,
-        trackingLabel: value.meta.trackingLabel
+        scopeDetails: value.meta.scopeDetails
       };
     };
 
@@ -8539,9 +8337,9 @@
   var getRedirectDetails = function getRedirectDetails(redirectDecisions) {
     var decision = redirectDecisions[0];
     var items = decision.items,
-      id = decision.id,
-      scope = decision.scope,
-      scopeDetails = decision.scopeDetails;
+        id = decision.id,
+        scope = decision.scope,
+        scopeDetails = decision.scopeDetails;
     var content = items[0].data.content;
     return {
       content: content,
@@ -8555,13 +8353,13 @@
 
   var createRedirectHandler = (function (_ref) {
     var collect = _ref.collect,
-      window = _ref.window,
-      logger = _ref.logger,
-      showContainers = _ref.showContainers;
+        window = _ref.window,
+        logger = _ref.logger,
+        showContainers = _ref.showContainers;
     return function (redirectDecisions) {
       var _getRedirectDetails = getRedirectDetails(redirectDecisions),
-        content = _getRedirectDetails.content,
-        decisions = _getRedirectDetails.decisions;
+          content = _getRedirectDetails.content,
+          decisions = _getRedirectDetails.decisions;
 
       var documentMayUnload = true;
       return collect({
@@ -8578,8 +8376,8 @@
 
   var getPropositions = function getPropositions(_ref) {
     var viewCache = _ref.viewCache,
-      viewName = _ref.viewName,
-      pageWideScopeDecisions = _ref.pageWideScopeDecisions;
+        viewName = _ref.viewName,
+        pageWideScopeDecisions = _ref.pageWideScopeDecisions;
 
     if (!viewName) {
       return {
@@ -8598,13 +8396,13 @@
 
   var createAutorenderingHandler = (function (_ref2) {
     var viewCache = _ref2.viewCache,
-      executeDecisions = _ref2.executeDecisions,
-      showContainers = _ref2.showContainers,
-      collect = _ref2.collect;
+        executeDecisions = _ref2.executeDecisions,
+        showContainers = _ref2.showContainers,
+        collect = _ref2.collect;
     return function (_ref3) {
       var viewName = _ref3.viewName,
-        pageWideScopeDecisions = _ref3.pageWideScopeDecisions,
-        nonAutoRenderableDecisions = _ref3.nonAutoRenderableDecisions;
+          pageWideScopeDecisions = _ref3.pageWideScopeDecisions,
+          nonAutoRenderableDecisions = _ref3.nonAutoRenderableDecisions;
       return Promise.resolve(pageWideScopeDecisions).then(function (propositions) {
         return getPropositions({
           viewCache: viewCache,
@@ -8649,8 +8447,8 @@
 
   var getViewPropositions = function getViewPropositions(_ref) {
     var viewCache = _ref.viewCache,
-      viewName = _ref.viewName,
-      propositions = _ref.propositions;
+        viewName = _ref.viewName,
+        propositions = _ref.propositions;
 
     if (!viewName) {
       return propositions;
@@ -8676,9 +8474,9 @@
     var viewCache = _ref3.viewCache;
     return function (_ref4) {
       var viewName = _ref4.viewName,
-        redirectDecisions = _ref4.redirectDecisions,
-        pageWideScopeDecisions = _ref4.pageWideScopeDecisions,
-        nonAutoRenderableDecisions = _ref4.nonAutoRenderableDecisions;
+          redirectDecisions = _ref4.redirectDecisions,
+          pageWideScopeDecisions = _ref4.pageWideScopeDecisions,
+          nonAutoRenderableDecisions = _ref4.nonAutoRenderableDecisions;
       var propositions = [].concat(_toConsumableArray(redirectDecisions), _toConsumableArray(pageWideScopeDecisions), _toConsumableArray(nonAutoRenderableDecisions));
       return Promise.resolve(propositions).then(function (items) {
         return getViewPropositions({
@@ -8704,7 +8502,7 @@
 
     var updatePropositionItems = function updatePropositionItems(_ref2) {
       var items = _ref2.items,
-        metadataForScope = _ref2.metadataForScope;
+          metadataForScope = _ref2.metadataForScope;
       return items.filter(filterItemsPredicate).map(function (item) {
         if (item.schema !== HTML_CONTENT_ITEM) {
           return _objectSpread2({}, item);
@@ -8731,12 +8529,12 @@
 
     var preparePropositions = function preparePropositions(_ref3) {
       var propositions = _ref3.propositions,
-        metadata = _ref3.metadata;
+          metadata = _ref3.metadata;
       return propositions.filter(filterPropositionsPredicate).map(function (proposition) {
         if (isNonEmptyArray(proposition.items)) {
           var id = proposition.id,
-            scope = proposition.scope,
-            scopeDetails = proposition.scopeDetails;
+              scope = proposition.scope,
+              scopeDetails = proposition.scopeDetails;
           return {
             id: id,
             scope: scope,
@@ -8756,7 +8554,7 @@
 
     var applyPropositions = function applyPropositions(_ref4) {
       var propositions = _ref4.propositions,
-        metadata = _ref4.metadata;
+          metadata = _ref4.metadata;
       var propositionsToExecute = preparePropositions({
         propositions: propositions,
         metadata: metadata
@@ -8768,8 +8566,8 @@
 
     return function (_ref5) {
       var propositions = _ref5.propositions,
-        _ref5$metadata = _ref5.metadata,
-        metadata = _ref5$metadata === void 0 ? {} : _ref5$metadata;
+          _ref5$metadata = _ref5.metadata,
+          metadata = _ref5$metadata === void 0 ? {} : _ref5$metadata;
 
       if (isNonEmptyArray(propositions)) {
         return applyPropositions({
@@ -8801,33 +8599,6 @@
   });
 
   /*
-  Copyright 2022 Adobe. All rights reserved.
-  This file is licensed to you under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License. You may obtain a copy
-  of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software distributed under
-  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-  OF ANY KIND, either express or implied. See the License for the specific language
-  governing permissions and limitations under the License.
-  */
-  var createSetTargetMigration = (function (_ref) {
-    var targetMigrationEnabled = _ref.targetMigrationEnabled;
-
-    if (targetMigrationEnabled) {
-      return function (request) {
-        request.getPayload().mergeMeta({
-          target: {
-            migration: true
-          }
-        });
-      };
-    }
-
-    return noop$1;
-  });
-
-  /*
   Copyright 2019 Adobe. All rights reserved.
   This file is licensed to you under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License. You may obtain a copy
@@ -8841,19 +8612,17 @@
 
   var createPersonalization = function createPersonalization(_ref) {
     var config = _ref.config,
-      logger = _ref.logger,
-      eventManager = _ref.eventManager;
-    var targetMigrationEnabled = config.targetMigrationEnabled,
-      prehidingStyle = config.prehidingStyle;
+        logger = _ref.logger,
+        eventManager = _ref.eventManager;
     var collect = createCollect({
       eventManager: eventManager,
       mergeDecisionsMeta: mergeDecisionsMeta
     });
 
     var _createClickStorage = createClickStorage(),
-      getClickMetasBySelector = _createClickStorage.getClickMetasBySelector,
-      getClickSelectors = _createClickStorage.getClickSelectors,
-      storeClickMetrics = _createClickStorage.storeClickMetrics;
+        getClickMetasBySelector = _createClickStorage.getClickMetasBySelector,
+        getClickSelectors = _createClickStorage.getClickSelectors,
+        storeClickMetrics = _createClickStorage.storeClickMetrics;
 
     var getPageLocation = createGetPageLocation({
       window: window
@@ -8891,7 +8660,7 @@
       showContainers: showContainers
     });
     var fetchDataHandler = createFetchDataHandler({
-      prehidingStyle: prehidingStyle,
+      config: config,
       responseHandler: responseHandler,
       hideContainers: hideContainers,
       mergeQuery: mergeQuery
@@ -8908,9 +8677,6 @@
       executeDecisions: executeDecisions,
       viewCache: viewCache
     });
-    var setTargetMigration = createSetTargetMigration({
-      targetMigrationEnabled: targetMigrationEnabled
-    });
     return createComponent$3({
       getPageLocation: getPageLocation,
       logger: logger,
@@ -8921,15 +8687,13 @@
       mergeQuery: mergeQuery,
       viewCache: viewCache,
       showContainers: showContainers,
-      applyPropositions: applyPropositions,
-      setTargetMigration: setTargetMigration
+      applyPropositions: applyPropositions
     });
   };
 
   createPersonalization.namespace = "Personalization";
   createPersonalization.configValidators = {
-    prehidingStyle: boundString().nonEmpty(),
-    targetMigrationEnabled: boundBoolean().default(false)
+    prehidingStyle: boundString().nonEmpty()
   };
 
   /*
@@ -8992,14 +8756,12 @@
   };
 
   var getScreenOrientationViaMediaQuery = function getScreenOrientationViaMediaQuery(window) {
-    if (isFunction(window.matchMedia)) {
-      if (window.matchMedia("(orientation: portrait)").matches) {
-        return "portrait";
-      }
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      return "portrait";
+    }
 
-      if (window.matchMedia("(orientation: landscape)").matches) {
-        return "landscape";
-      }
+    if (window.matchMedia("(orientation: landscape)").matches) {
+      return "landscape";
     }
 
     return null;
@@ -9008,32 +8770,21 @@
   var injectDevice = (function (window) {
     return function (xdm) {
       var _window$screen = window.screen,
-        width = _window$screen.width,
-        height = _window$screen.height;
-      var device = {};
-      var screenHeight = toInteger(height);
-
-      if (screenHeight >= 0) {
-        device.screenHeight = screenHeight;
-      }
-
-      var screenWidth = toInteger(width);
-
-      if (screenWidth >= 0) {
-        device.screenWidth = screenWidth;
-      }
-
+          width = _window$screen.width,
+          height = _window$screen.height;
+      var device = {
+        screenHeight: height,
+        screenWidth: width
+      };
       var orientation = getScreenOrientationViaProperty(window) || getScreenOrientationViaMediaQuery(window);
 
       if (orientation) {
         device.screenOrientation = orientation;
       }
 
-      if (Object.keys(device).length > 0) {
-        deepAssign(xdm, {
-          device: device
-        });
-      }
+      deepAssign(xdm, {
+        device: device
+      });
     };
   });
 
@@ -9053,23 +8804,16 @@
       var _window$document$docu = window.document.documentElement;
       _window$document$docu = _window$document$docu === void 0 ? {} : _window$document$docu;
       var clientWidth = _window$document$docu.clientWidth,
-        clientHeight = _window$document$docu.clientHeight;
+          clientHeight = _window$document$docu.clientHeight;
       var environment = {
         type: "browser"
       };
-      var viewportWidth = toInteger(clientWidth);
 
-      if (viewportWidth >= 0) {
+      if (isNumber(clientWidth) && clientWidth >= 0 && isNumber(clientHeight) && clientHeight >= 0) {
         environment.browserDetails = {
-          viewportWidth: viewportWidth
+          viewportWidth: Math.round(clientWidth),
+          viewportHeight: Math.round(clientHeight)
         };
-      }
-
-      var viewportHeight = toInteger(clientHeight);
-
-      if (viewportHeight >= 0) {
-        environment.browserDetails = environment.browserDetails || {};
-        environment.browserDetails.viewportHeight = viewportHeight;
       }
 
       deepAssign(xdm, {
@@ -9092,16 +8836,13 @@
   var injectPlaceContext = (function (dateProvider) {
     return function (xdm) {
       var date = dateProvider();
-      var placeContext = {};
+      var placeContext = {
+        localTime: toISOStringLocal(date)
+      };
       var localTimezoneOffset = toInteger(date.getTimezoneOffset());
 
       if (localTimezoneOffset !== undefined) {
         placeContext.localTimezoneOffset = localTimezoneOffset;
-      } // make sure the timezone offset only uses two digits
-
-
-      if (localTimezoneOffset === undefined || Math.abs(localTimezoneOffset) < 6000) {
-        placeContext.localTime = toISOStringLocal(date);
       }
 
       deepAssign(xdm, {
@@ -9156,7 +8897,7 @@
   */
   // The __VERSION__ keyword will be replace at alloy build time with the package.json version.
   // see babel-plugin-version
-  var libraryVersion = "2.14.0";
+  var libraryVersion = "2.12.0";
 
   /*
   Copyright 2019 Adobe. All rights reserved.
@@ -9191,11 +8932,11 @@
   OF ANY KIND, either express or implied. See the License for the specific language
   governing permissions and limitations under the License.
   */
-  var createComponent$2 = (function (config, logger, optionalContexts, requiredContexts) {
+  var createComponent$2 = (function (config, logger, availableContexts, requiredContexts) {
     var configuredContexts = config.context;
     var contexts = flatMap(configuredContexts, function (context, i) {
-      if (optionalContexts[context]) {
-        return [optionalContexts[context]];
+      if (availableContexts[context]) {
+        return [availableContexts[context]];
       }
 
       logger.warn("Invalid context[" + i + "]: '" + context + "' is not available.");
@@ -9207,18 +8948,17 @@
         onBeforeEvent: function onBeforeEvent(_ref) {
           var event = _ref.event;
           var xdm = {};
-          return Promise.all(contexts.map(function (context) {
-            return Promise.resolve(context(xdm, logger));
-          })).then(function () {
-            return event.mergeXdm(xdm);
+          contexts.forEach(function (context) {
+            return context(xdm);
           });
+          event.mergeXdm(xdm);
         }
       }
     };
   });
 
   /*
-  Copyright 2022 Adobe. All rights reserved.
+  Copyright 2019 Adobe. All rights reserved.
   This file is licensed to you under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License. You may obtain a copy
   of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -9228,49 +8968,6 @@
   OF ANY KIND, either express or implied. See the License for the specific language
   governing permissions and limitations under the License.
   */
-  var highEntropyUserAgentHints$1 = [["architecture", "string"], ["bitness", "string"], ["model", "string"], ["platformVersion", "string"], ["wow64", "boolean"]];
-
-  var browserSupportsUserAgentClientHints = function browserSupportsUserAgentClientHints(navigator) {
-    return typeof navigator.userAgentData !== "undefined";
-  };
-
-  var injectHighEntropyUserAgentHints = (function (navigator) {
-    if (!browserSupportsUserAgentClientHints(navigator)) {
-      return noop$1;
-    }
-
-    return function (xdm, logger) {
-      try {
-        return navigator.userAgentData.getHighEntropyValues(highEntropyUserAgentHints$1.map(function (hint) {
-          return hint[0];
-        })).then(function (hints) {
-          var userAgentClientHints = {};
-          highEntropyUserAgentHints$1.forEach(function (_ref) {
-            var _ref2 = _slicedToArray(_ref, 2),
-              hintName = _ref2[0],
-              hintType = _ref2[1];
-
-            if (Object.prototype.hasOwnProperty.call(hints, hintName) &&
-              /* eslint-disable-next-line valid-typeof */
-              _typeof(hints[hintName]) === hintType) {
-              userAgentClientHints[hintName] = hints[hintName];
-            }
-          });
-          deepAssign(xdm, {
-            environment: {
-              browserDetails: {
-                userAgentClientHints: userAgentClientHints
-              }
-            }
-          });
-        });
-      } catch (error) {
-        logger.warn("Unable to collect user-agent client hints. " + error.message);
-        return noop$1;
-      }
-    };
-  });
-
   var web = injectWeb(window);
   var device = injectDevice(window);
   var environment = injectEnvironment(window);
@@ -9280,41 +8977,34 @@
   var timestamp = injectTimestamp(function () {
     return new Date();
   });
-  var highEntropyUserAgentHints = injectHighEntropyUserAgentHints(navigator);
-  var defaultEnabledContexts = {
+  var optionalContexts = {
     web: web,
     device: device,
     environment: environment,
     placeContext: placeContext
   };
-  var defaultDisabledContexts = {
-    highEntropyUserAgentHints: highEntropyUserAgentHints
-  };
-
-  var optionalContexts = _objectSpread2(_objectSpread2({}, defaultEnabledContexts), defaultDisabledContexts);
-
   var requiredContexts = [timestamp, implementationDetails];
 
   var createContext = function createContext(_ref) {
     var config = _ref.config,
-      logger = _ref.logger;
+        logger = _ref.logger;
     return createComponent$2(config, logger, optionalContexts, requiredContexts);
   };
 
   createContext.namespace = "Context";
   createContext.configValidators = {
-    context: boundArrayOf(boundString()).default(Object.keys(defaultEnabledContexts))
+    context: boundArrayOf(boundString()).default(Object.keys(optionalContexts))
   };
 
   var createComponent$1 = (function (_ref) {
     var storedConsent = _ref.storedConsent,
-      taskQueue = _ref.taskQueue,
-      defaultConsent = _ref.defaultConsent,
-      consent = _ref.consent,
-      sendSetConsentRequest = _ref.sendSetConsentRequest,
-      validateSetConsentOptions = _ref.validateSetConsentOptions,
-      consentHashStore = _ref.consentHashStore,
-      doesIdentityCookieExist = _ref.doesIdentityCookieExist;
+        taskQueue = _ref.taskQueue,
+        defaultConsent = _ref.defaultConsent,
+        consent = _ref.consent,
+        sendSetConsentRequest = _ref.sendSetConsentRequest,
+        validateSetConsentOptions = _ref.validateSetConsentOptions,
+        consentHashStore = _ref.consentHashStore,
+        doesIdentityCookieExist = _ref.doesIdentityCookieExist;
 
     var defaultConsentByPurpose = _defineProperty({}, GENERAL, defaultConsent);
 
@@ -9352,7 +9042,7 @@
           optionsValidator: validateSetConsentOptions,
           run: function run(_ref2) {
             var consentOptions = _ref2.consent,
-              identityMap = _ref2.identityMap;
+                identityMap = _ref2.identityMap;
             consent.suspend();
             var consentHashes = consentHashStore.lookup(consentOptions);
             return taskQueue.addTask(function () {
@@ -9408,7 +9098,7 @@
 
   var getKey = function getKey(_ref) {
     var standard = _ref.standard,
-      version = _ref.version;
+        version = _ref.version;
     return standard + "." + version;
   };
 
@@ -9425,8 +9115,8 @@
           var key = getKey(consentObject);
 
           consentObject.standard;
-          consentObject.version;
-          var rest = _objectWithoutProperties(consentObject, _excluded);
+              consentObject.version;
+              var rest = _objectWithoutProperties(consentObject, _excluded);
 
           if (!currentHashes[key]) {
             currentHashes[key] = computeConsentHash(rest).toString();
@@ -9522,8 +9212,8 @@
   */
   var createStoredConsent = (function (_ref) {
     var parseConsentCookie = _ref.parseConsentCookie,
-      orgId = _ref.orgId,
-      cookieJar = _ref.cookieJar;
+        orgId = _ref.orgId,
+        cookieJar = _ref.cookieJar;
     var consentCookieName = getNamespacedCookieName(orgId, CONSENT);
     return {
       read: function read() {
@@ -9549,11 +9239,11 @@
   */
   var injectSendSetConsentRequest = (function (_ref) {
     var createConsentRequestPayload = _ref.createConsentRequestPayload,
-      createConsentRequest = _ref.createConsentRequest,
-      sendEdgeNetworkRequest = _ref.sendEdgeNetworkRequest;
+        createConsentRequest = _ref.createConsentRequest,
+        sendEdgeNetworkRequest = _ref.sendEdgeNetworkRequest;
     return function (_ref2) {
       var consentOptions = _ref2.consentOptions,
-        identityMap = _ref2.identityMap;
+          identityMap = _ref2.identityMap;
       var payload = createConsentRequestPayload();
       payload.setConsent(consentOptions);
 
@@ -9596,9 +9286,9 @@
     var categoryPairs = cookieValue.split(";");
     return categoryPairs.reduce(function (consentByPurpose, categoryPair) {
       var _categoryPair$split = categoryPair.split("="),
-        _categoryPair$split2 = _slicedToArray(_categoryPair$split, 2),
-        name = _categoryPair$split2[0],
-        value = _categoryPair$split2[1];
+          _categoryPair$split2 = _slicedToArray(_categoryPair$split, 2),
+          name = _categoryPair$split2[0],
+          value = _categoryPair$split2[1];
 
       consentByPurpose[name] = value;
       return consentByPurpose;
@@ -9624,11 +9314,11 @@
 
   var createPrivacy = function createPrivacy(_ref) {
     var config = _ref.config,
-      consent = _ref.consent,
-      sendEdgeNetworkRequest = _ref.sendEdgeNetworkRequest,
-      createNamespacedStorage = _ref.createNamespacedStorage;
+        consent = _ref.consent,
+        sendEdgeNetworkRequest = _ref.sendEdgeNetworkRequest,
+        createNamespacedStorage = _ref.createNamespacedStorage;
     var orgId = config.orgId,
-      defaultConsent = config.defaultConsent;
+        defaultConsent = config.defaultConsent;
     var storedConsent = createStoredConsent({
       parseConsentCookie: parseConsentCookie,
       orgId: orgId,
@@ -9723,7 +9413,7 @@
 
   var prepareLibraryInfo = function prepareLibraryInfo(_ref) {
     var config = _ref.config,
-      componentRegistry = _ref.componentRegistry;
+        componentRegistry = _ref.componentRegistry;
     var allCommands = [].concat(_toConsumableArray(componentRegistry.getCommandNames()), [CONFIGURE, SET_DEBUG]).sort();
 
     var resultConfig = _objectSpread2({}, config);
@@ -9746,7 +9436,7 @@
 
   var createLibraryInfo = function createLibraryInfo(_ref2) {
     var config = _ref2.config,
-      componentRegistry = _ref2.componentRegistry;
+        componentRegistry = _ref2.componentRegistry;
     var libraryInfo = prepareLibraryInfo({
       config: config,
       componentRegistry: componentRegistry
@@ -9856,11 +9546,11 @@
 
   var buildAndValidateConfig = (function (_ref) {
     var options = _ref.options,
-      componentCreators = _ref.componentCreators,
-      coreConfigValidators = _ref.coreConfigValidators,
-      createConfig = _ref.createConfig,
-      logger = _ref.logger,
-      setDebugEnabled = _ref.setDebugEnabled;
+        componentCreators = _ref.componentCreators,
+        coreConfigValidators = _ref.coreConfigValidators,
+        createConfig = _ref.createConfig,
+        logger = _ref.logger,
+        setDebugEnabled = _ref.setDebugEnabled;
     var schema = buildSchema(coreConfigValidators, componentCreators);
     var config = createConfig(transformOptions(schema, options));
     setDebugEnabled(config.debugEnabled, {
@@ -9885,9 +9575,9 @@
   */
   var initializeComponents = (function (_ref) {
     var componentCreators = _ref.componentCreators,
-      lifecycle = _ref.lifecycle,
-      componentRegistry = _ref.componentRegistry,
-      getImmediatelyAvailableTools = _ref.getImmediatelyAvailableTools;
+        lifecycle = _ref.lifecycle,
+        componentRegistry = _ref.componentRegistry,
+        getImmediatelyAvailableTools = _ref.getImmediatelyAvailableTools;
     componentCreators.forEach(function (createComponent) {
       var namespace = createComponent.namespace; // TO-DOCUMENT: Helpers that we inject into factories.
 
@@ -9980,7 +9670,7 @@
   */
   var injectHandleError = (function (_ref) {
     var errorPrefix = _ref.errorPrefix,
-      logger = _ref.logger;
+        logger = _ref.logger;
     return function (error, operation) {
       var err = toError(error); // In the case of declined consent, we've opted to not reject the promise
       // returned to the customer, but instead resolve the promise with an
@@ -10021,7 +9711,7 @@
         headers: {
           "Content-Type": "text/plain; charset=UTF-8"
         },
-        referrerPolicy: "no-referrer-when-downgrade",
+        referrer: "client",
         body: body
       }).then(function (response) {
         return response.text().then(function (responseBody) {
@@ -10105,8 +9795,8 @@
   */
   var injectSendBeaconRequest = (function (_ref) {
     var sendBeacon = _ref.sendBeacon,
-      sendFetchRequest = _ref.sendFetchRequest,
-      logger = _ref.logger;
+        sendFetchRequest = _ref.sendFetchRequest,
+        logger = _ref.logger;
     return function (url, body) {
       var blob = new Blob([body], {
         type: "text/plain; charset=UTF-8"
@@ -10143,9 +9833,9 @@
   */
   var createLogger = (function (_ref) {
     var getDebugEnabled = _ref.getDebugEnabled,
-      console = _ref.console,
-      getMonitors = _ref.getMonitors,
-      context = _ref.context;
+        console = _ref.console,
+        getMonitors = _ref.getMonitors,
+        context = _ref.context;
     var prefix = "[" + context.instanceName + "]";
 
     if (context.componentName) {
@@ -10255,14 +9945,14 @@
   var EVENT_CANCELLATION_MESSAGE = "Event was canceled because the onBeforeEventSend callback returned false.";
   var createEventManager = (function (_ref) {
     var config = _ref.config,
-      logger = _ref.logger,
-      lifecycle = _ref.lifecycle,
-      consent = _ref.consent,
-      createEvent = _ref.createEvent,
-      createDataCollectionRequestPayload = _ref.createDataCollectionRequestPayload,
-      createDataCollectionRequest = _ref.createDataCollectionRequest,
-      sendEdgeNetworkRequest = _ref.sendEdgeNetworkRequest,
-      _applyResponse = _ref.applyResponse;
+        logger = _ref.logger,
+        lifecycle = _ref.lifecycle,
+        consent = _ref.consent,
+        createEvent = _ref.createEvent,
+        createDataCollectionRequestPayload = _ref.createDataCollectionRequestPayload,
+        createDataCollectionRequest = _ref.createDataCollectionRequest,
+        sendEdgeNetworkRequest = _ref.sendEdgeNetworkRequest,
+        _applyResponse = _ref.applyResponse;
     var onBeforeEventSend = config.onBeforeEventSend;
     return {
       createEvent: createEvent,
@@ -10275,8 +9965,6 @@
        * the request payload.
        * @param {Object} [options]
        * @param {boolean} [options.renderDecisions=false]
-       * @param {Array} [options.decisionScopes] Note: this option will soon
-       * be deprecated, please use *personalization.decisionScopes* instead
        * @param {Object} [options.personalization]
        * @param {Object} [options.serverState]
        * This will be passed to components
@@ -10286,9 +9974,9 @@
       sendEvent: function sendEvent(event) {
         var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         var _options$renderDecisi = options.renderDecisions,
-          renderDecisions = _options$renderDecisi === void 0 ? false : _options$renderDecisi,
-          decisionScopes = options.decisionScopes,
-          personalization = options.personalization;
+            renderDecisions = _options$renderDecisi === void 0 ? false : _options$renderDecisi,
+            decisionScopes = options.decisionScopes,
+            personalization = options.personalization;
         var payload = createDataCollectionRequestPayload();
         var request = createDataCollectionRequest(payload);
         var onResponseCallbackAggregator = createCallbackAggregator();
@@ -10340,20 +10028,20 @@
       applyResponse: function applyResponse(event) {
         var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         var _options$renderDecisi2 = options.renderDecisions,
-          renderDecisions = _options$renderDecisi2 === void 0 ? false : _options$renderDecisi2,
-          _options$responseHead = options.responseHeaders,
-          responseHeaders = _options$responseHead === void 0 ? {} : _options$responseHead,
-          _options$responseBody = options.responseBody,
-          responseBody = _options$responseBody === void 0 ? {
-            handle: []
-          } : _options$responseBody;
+            renderDecisions = _options$renderDecisi2 === void 0 ? false : _options$renderDecisi2,
+            _options$responseHead = options.responseHeaders,
+            responseHeaders = _options$responseHead === void 0 ? {} : _options$responseHead,
+            _options$responseBody = options.responseBody,
+            responseBody = _options$responseBody === void 0 ? {
+          handle: []
+        } : _options$responseBody;
         var payload = createDataCollectionRequestPayload();
         var request = createDataCollectionRequest(payload);
         var onResponseCallbackAggregator = createCallbackAggregator();
         return lifecycle.onBeforeEvent({
           event: event,
           renderDecisions: renderDecisions,
-          decisionScopes: [PAGE_WIDE_SCOPE],
+          decisionScopes: [],
           personalization: {},
           onResponse: onResponseCallbackAggregator.add,
           onRequestFailure: noop$1
@@ -10384,9 +10072,9 @@
   var STATE_STORE_HANDLE_TYPE = "state:store";
   var createCookieTransfer = (function (_ref) {
     var cookieJar = _ref.cookieJar,
-      shouldTransferCookie = _ref.shouldTransferCookie,
-      apexDomain = _ref.apexDomain,
-      dateProvider = _ref.dateProvider;
+        orgId = _ref.orgId,
+        apexDomain = _ref.apexDomain,
+        dateProvider = _ref.dateProvider;
     return {
       /**
        * When sending to a third-party endpoint, the endpoint won't be able to
@@ -10404,7 +10092,14 @@
 
         if (!isEndpointFirstParty) {
           var cookies = cookieJar.get();
-          var entries = Object.keys(cookies).filter(shouldTransferCookie).map(function (qualifyingCookieName) {
+          var entries = Object.keys(cookies).filter(function (name) {
+            // We have a contract with the server that we will pass
+            // all cookies whose names are namespaced according to the
+            // logic in isNamespacedCookieName as well as any legacy
+            // cookie names (so that the server can handle migrating
+            // identities on websites previously using Visitor.js)
+            return isNamespacedCookieName(orgId, name) || isLegacyCookieName(name);
+          }).map(function (qualifyingCookieName) {
             return {
               key: qualifyingCookieName,
               value: cookies[qualifyingCookieName]
@@ -10452,45 +10147,6 @@
     };
   });
 
-  /*
-  Copyright 2022 Adobe. All rights reserved.
-  This file is licensed to you under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License. You may obtain a copy
-  of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software distributed under
-  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-  OF ANY KIND, either express or implied. See the License for the specific language
-  governing permissions and limitations under the License.
-  */
-  var MBOX_EDGE_CLUSTER = "mboxEdgeCluster";
-  var AT_QA_MODE = "at_qa_mode";
-  var MBOX = "mbox";
-
-  /*
-  Copyright 2022 Adobe. All rights reserved.
-  This file is licensed to you under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License. You may obtain a copy
-  of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software distributed under
-  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-  OF ANY KIND, either express or implied. See the License for the specific language
-  governing permissions and limitations under the License.
-  */
-  var injectShouldTransferCookie = (function (_ref) {
-    var orgId = _ref.orgId,
-      targetMigrationEnabled = _ref.targetMigrationEnabled;
-    return function (name) {
-      // We have a contract with the server that we will pass
-      // all cookies whose names are namespaced according to the
-      // logic in isNamespacedCookieName as well as any legacy
-      // cookie names (so that the server can handle migrating
-      // identities on websites previously using Visitor.js)
-      return isNamespacedCookieName(orgId, name) || name === AT_QA_MODE || targetMigrationEnabled && name === MBOX;
-    };
-  });
-
   var apiVersion = "v1";
 
   var mergeLifecycleResponses = (function (returnValues) {
@@ -10530,16 +10186,15 @@
   */
   var injectSendEdgeNetworkRequest = (function (_ref) {
     var config = _ref.config,
-      lifecycle = _ref.lifecycle,
-      cookieTransfer = _ref.cookieTransfer,
-      sendNetworkRequest = _ref.sendNetworkRequest,
-      createResponse = _ref.createResponse,
-      processWarningsAndErrors = _ref.processWarningsAndErrors,
-      getLocationHint = _ref.getLocationHint,
-      getAssuranceValidationTokenParams = _ref.getAssuranceValidationTokenParams;
+        lifecycle = _ref.lifecycle,
+        cookieTransfer = _ref.cookieTransfer,
+        sendNetworkRequest = _ref.sendNetworkRequest,
+        createResponse = _ref.createResponse,
+        processWarningsAndErrors = _ref.processWarningsAndErrors,
+        getLocationHint = _ref.getLocationHint;
     var edgeDomain = config.edgeDomain,
-      edgeBasePath = config.edgeBasePath,
-      edgeConfigId = config.edgeConfigId;
+        edgeBasePath = config.edgeBasePath,
+        edgeConfigId = config.edgeConfigId;
     /**
      * Sends a network request that is aware of payload interfaces,
      * lifecycle methods, configured edge domains, response structures, etc.
@@ -10547,10 +10202,10 @@
 
     return function (_ref2) {
       var request = _ref2.request,
-        _ref2$runOnResponseCa = _ref2.runOnResponseCallbacks,
-        runOnResponseCallbacks = _ref2$runOnResponseCa === void 0 ? noop$1 : _ref2$runOnResponseCa,
-        _ref2$runOnRequestFai = _ref2.runOnRequestFailureCallbacks,
-        runOnRequestFailureCallbacks = _ref2$runOnRequestFai === void 0 ? noop$1 : _ref2$runOnRequestFai;
+          _ref2$runOnResponseCa = _ref2.runOnResponseCallbacks,
+          runOnResponseCallbacks = _ref2$runOnResponseCa === void 0 ? noop$1 : _ref2$runOnResponseCa,
+          _ref2$runOnRequestFai = _ref2.runOnRequestFailureCallbacks,
+          runOnRequestFailureCallbacks = _ref2$runOnRequestFai === void 0 ? noop$1 : _ref2$runOnRequestFai;
       var onResponseCallbackAggregator = createCallbackAggregator();
       onResponseCallbackAggregator.add(lifecycle.onResponse);
       onResponseCallbackAggregator.add(runOnResponseCallbacks);
@@ -10562,10 +10217,10 @@
         onResponse: onResponseCallbackAggregator.add,
         onRequestFailure: onRequestFailureCallbackAggregator.add
       }).then(function () {
-        var endpointDomain = request.getUseIdThirdPartyDomain() ? ID_THIRD_PARTY : edgeDomain;
+        var endpointDomain = edgeDomain; // request.getUseIdThirdPartyDomain() ? ID_THIRD_PARTY : edgeDomain;
         var locationHint = getLocationHint();
         var edgeBasePathWithLocationHint = locationHint ? edgeBasePath + "/" + locationHint : edgeBasePath;
-        var url = "https://" + endpointDomain + "/" + edgeBasePathWithLocationHint + "/" + apiVersion + "/" + request.getAction() + "?configId=" + edgeConfigId + "&requestId=" + request.getId() + getAssuranceValidationTokenParams();
+        var url = "https://" + endpointDomain + "/" + edgeBasePathWithLocationHint + "/" + apiVersion + "/" + request.getAction() + "?configId=" + edgeConfigId + "&requestId=" + request.getId();
         cookieTransfer.cookiesToPayload(request.getPayload(), endpointDomain);
         return sendNetworkRequest({
           requestId: request.getId(),
@@ -10578,7 +10233,7 @@
         return networkResponse;
       }).catch(handleRequestFailure(onRequestFailureCallbackAggregator)).then(function (_ref3) {
         var parsedBody = _ref3.parsedBody,
-          getHeader = _ref3.getHeader;
+            getHeader = _ref3.getHeader;
         // Note that networkResponse.parsedBody may be undefined if it was a
         // 204 No Content response. That's fine.
         var response = createResponse({
@@ -10630,8 +10285,8 @@
     var logger = _ref.logger;
     return function (networkResponse) {
       var statusCode = networkResponse.statusCode,
-        body = networkResponse.body,
-        parsedBody = networkResponse.parsedBody;
+          body = networkResponse.body,
+          parsedBody = networkResponse.parsedBody;
 
       if (statusCode < 200 || statusCode >= 300 || !parsedBody && statusCode !== NO_CONTENT || parsedBody && !Array.isArray(parsedBody.handle)) {
         var bodyToLog = parsedBody ? JSON.stringify(parsedBody, null, 2) : body;
@@ -10641,9 +10296,9 @@
 
       if (parsedBody) {
         var _parsedBody$warnings = parsedBody.warnings,
-          warnings = _parsedBody$warnings === void 0 ? [] : _parsedBody$warnings,
-          _parsedBody$errors = parsedBody.errors,
-          errors = _parsedBody$errors === void 0 ? [] : _parsedBody$errors;
+            warnings = _parsedBody$warnings === void 0 ? [] : _parsedBody$warnings,
+            _parsedBody$errors = parsedBody.errors,
+            errors = _parsedBody$errors === void 0 ? [] : _parsedBody$errors;
         warnings.forEach(function (warning) {
           logger.warn(MESSAGE_PREFIX + " warning:", warning);
         });
@@ -10667,25 +10322,10 @@
   */
   var injectGetLocationHint = (function (_ref) {
     var orgId = _ref.orgId,
-      cookieJar = _ref.cookieJar;
+        cookieJar = _ref.cookieJar;
     var clusterCookieName = getNamespacedCookieName(orgId, CLUSTER);
-
-    var fromClusterCookie = function fromClusterCookie() {
-      return cookieJar.get(clusterCookieName);
-    };
-
-    var fromTarget = function fromTarget() {
-      var mboxEdgeCluster = cookieJar.get(MBOX_EDGE_CLUSTER);
-
-      if (mboxEdgeCluster) {
-        return "t" + mboxEdgeCluster;
-      }
-
-      return undefined;
-    };
-
     return function () {
-      return fromClusterCookie() || fromTarget();
+      return cookieJar.get(clusterCookieName);
     };
   });
 
@@ -10706,7 +10346,7 @@
 
   var isRequestRetryable = (function (_ref) {
     var response = _ref.response,
-      retriesAttempted = _ref.retriesAttempted;
+        retriesAttempted = _ref.retriesAttempted;
     return retriesAttempted < MAX_RETRIES && includes(RETRYABLE_STATUS_CODES, response.statusCode);
   });
 
@@ -10768,7 +10408,7 @@
 
   var getRequestRetryDelay = (function (_ref) {
     var response = _ref.response,
-      retriesAttempted = _ref.retriesAttempted;
+        retriesAttempted = _ref.retriesAttempted;
     // Technically, only 429 or 503 responses should have a Retry-After header, but we'll respect the
     // header if we find it on any response.
     var delayInMillis = getDelayFromHeader(response); // Note that the value of delay may be 0 at this point, which would be a valid delay we want to use
@@ -10785,17 +10425,17 @@
   var HTTP_STATUS_OK = 200;
   var injectApplyResponse = (function (_ref) {
     var cookieTransfer = _ref.cookieTransfer,
-      lifecycle = _ref.lifecycle,
-      createResponse = _ref.createResponse,
-      processWarningsAndErrors = _ref.processWarningsAndErrors;
+        lifecycle = _ref.lifecycle,
+        createResponse = _ref.createResponse,
+        processWarningsAndErrors = _ref.processWarningsAndErrors;
     return function (_ref2) {
       var request = _ref2.request,
-        responseHeaders = _ref2.responseHeaders,
-        responseBody = _ref2.responseBody,
-        _ref2$runOnResponseCa = _ref2.runOnResponseCallbacks,
-        runOnResponseCallbacks = _ref2$runOnResponseCa === void 0 ? noop$1 : _ref2$runOnResponseCa,
-        _ref2$runOnRequestFai = _ref2.runOnRequestFailureCallbacks,
-        runOnRequestFailureCallbacks = _ref2$runOnRequestFai === void 0 ? noop$1 : _ref2$runOnRequestFai;
+          responseHeaders = _ref2.responseHeaders,
+          responseBody = _ref2.responseBody,
+          _ref2$runOnResponseCa = _ref2.runOnResponseCallbacks,
+          runOnResponseCallbacks = _ref2$runOnResponseCa === void 0 ? noop$1 : _ref2$runOnResponseCa,
+          _ref2$runOnRequestFai = _ref2.runOnRequestFailureCallbacks,
+          runOnRequestFailureCallbacks = _ref2$runOnRequestFai === void 0 ? noop$1 : _ref2$runOnRequestFai;
       var onResponseCallbackAggregator = createCallbackAggregator();
       onResponseCallbackAggregator.add(lifecycle.onResponse);
       onResponseCallbackAggregator.add(runOnResponseCallbacks);
@@ -10845,10 +10485,10 @@
   */
   var createNamespacedStorage = injectStorage(window);
   var _window = window,
-    console$1 = _window.console,
-    fetch = _window.fetch,
-    navigator$1 = _window.navigator,
-    XMLHttpRequest = _window.XMLHttpRequest; // set this up as a function so that monitors can be added at anytime
+      console$1 = _window.console,
+      fetch = _window.fetch,
+      navigator = _window.navigator,
+      XMLHttpRequest = _window.XMLHttpRequest; // set this up as a function so that monitors can be added at anytime
   // eslint-disable-next-line no-underscore-dangle
 
   var getMonitors = function getMonitors() {
@@ -10863,16 +10503,12 @@
     XMLHttpRequest: XMLHttpRequest
   });
   var fireReferrerHideableImage = injectFireReferrerHideableImage();
-  var getAssuranceValidationTokenParams = createGetAssuranceValidationTokenParams({
-    window: window,
-    createNamespacedStorage: createNamespacedStorage
-  });
   var createExecuteCommand = function createExecuteCommand(_ref) {
     var instanceName = _ref.instanceName,
-      _ref$logController = _ref.logController,
-      setDebugEnabled = _ref$logController.setDebugEnabled,
-      logger = _ref$logController.logger,
-      createComponentLogger = _ref$logController.createComponentLogger;
+        _ref$logController = _ref.logController,
+        setDebugEnabled = _ref$logController.setDebugEnabled,
+        logger = _ref$logController.logger,
+        createComponentLogger = _ref$logController.createComponentLogger;
     var componentRegistry = createComponentRegistry();
     var lifecycle = createLifecycle(componentRegistry);
 
@@ -10896,24 +10532,19 @@
         logger: logger,
         setDebugEnabled: setDebugEnabled
       });
-      var orgId = config.orgId,
-        targetMigrationEnabled = config.targetMigrationEnabled;
-      var shouldTransferCookie = injectShouldTransferCookie({
-        orgId: orgId,
-        targetMigrationEnabled: targetMigrationEnabled
-      });
+      var orgId = config.orgId;
       var cookieTransfer = createCookieTransfer({
         cookieJar: loggingCookieJar,
-        shouldTransferCookie: shouldTransferCookie,
+        orgId: orgId,
         apexDomain: apexDomain,
         dateProvider: function dateProvider() {
           return new Date();
         }
       });
-      var sendBeaconRequest = isFunction(navigator$1.sendBeacon) ? injectSendBeaconRequest({
+      var sendBeaconRequest = isFunction(navigator.sendBeacon) ? injectSendBeaconRequest({
         // Without the bind(), the browser will complain about an
         // illegal invocation.
-        sendBeacon: navigator$1.sendBeacon.bind(navigator$1),
+        sendBeacon: navigator.sendBeacon.bind(navigator),
         sendFetchRequest: sendFetchRequest,
         logger: logger
       }) : sendFetchRequest;
@@ -10944,8 +10575,7 @@
         sendNetworkRequest: sendNetworkRequest,
         createResponse: createResponse,
         processWarningsAndErrors: processWarningsAndErrors,
-        getLocationHint: getLocationHint,
-        getAssuranceValidationTokenParams: getAssuranceValidationTokenParams
+        getLocationHint: getLocationHint
       });
       var applyResponse = injectApplyResponse({
         lifecycle: lifecycle,
