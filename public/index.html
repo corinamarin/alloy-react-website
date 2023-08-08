@@ -16,7 +16,7 @@
 <!--      };-->
 <!--    </script>-->
 
-    <script>
+<!--     <script>
       !function (n, o) {
         o.forEach(function (o) {
           n[o] || ((n.__alloyNS = n.__alloyNS ||
@@ -28,7 +28,8 @@
       }
       (window, ["alloy"]);
     </script>
-
+ -->
+    
 
     <!--/Data Layer-->
     <!-- targetPageParams(), targetPageParamsAll(), Data Providers or targetGlobalSettings() functions to enrich the visitor profile or modify the library settings-->
@@ -49,7 +50,28 @@
 <!--    </script>-->
     <!--/targetPageParams()-->
 <!--    <script src="%PUBLIC_URL%/scripts/at-taasqa1-spa.js"></script>-->
-    <script src="%PUBLIC_URL%/scripts/alloy2.js"></script>
+<script>
+  !function(n,o){o.forEach(function(o){n[o]||((n.__alloyNS=n.__alloyNS||
+  []).push(o),n[o]=function(){var u=arguments;return new Promise(
+  function(i,l){n[o].q.push([i,l,u])})},n[o].q=[])})}
+  (window,["alloy"]);
+</script>
+<script src="%PUBLIC_URL%/scripts/alloy.js"></script>
+<script>
+        alloy("configure", {
+          defaultConsent: "in",
+          edgeDomain: "edge-int.adobedc.net",
+          edgeConfigId: "19fc5fe9-37df-46da-8f5c-9eeff4f75ed9:prod",
+          orgId: "745F37C35E4B776E0A49421B@AdobeOrg",
+          debugEnabled: true,
+          idMigrationEnabled: false,
+          prehidingStyle: "body { opacity: 0 !important }"
+        });
+         
+        alloy("sendEvent",{
+        "renderDecisions": true
+        });
+</script>
 <!--    <script>-->
 <!--      function configureAlloy(obj) {-->
 <!--        obj ||= {};-->
@@ -71,7 +93,7 @@
 <!--      alloy("sendEvent", alloyEvent).catch(() => { console.log("ERROR: failed to send alloyEvent") });-->
 <!--    </script>-->
 
-    <script>
+<!--     <script>
       alloy("configure", {
         // defaultConsent: { general: "pending" },
         edgeDomain: undefined,
@@ -80,7 +102,7 @@
         debugEnabled: true,
         prehidingStyle: "body { opacity: 0 !important }"
       });
-    </script>
+    </script> -->
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Target SPA website" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -98,7 +120,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Target SPA website</title>
+    <title>Target SPA website - CJM-STAGE(stage) - AJO web</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
